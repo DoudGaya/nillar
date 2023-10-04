@@ -5,16 +5,24 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-
       fontFamily: {
-        read: ['Newsreader', 'serif']
+        read: ['Newsreader', 'serif'],
+        keisei: ['Kaisei Decol', 'serif'],
+        header: ['Fraunces', 'serif'],
+        newsreader: ['Newsreader', 'serif']
+
+      }, 
+      colors:{
+        'banner': '#dbdada',
+        'dark-shade': '#0c0c0c',
+        'dark-shade-bright': '#262626',
+        'primary-light': '#858652',
+        'button-light': '#474747',
+        'line-color' :'70600B',
+        'primary': 'rgb(112,96,10)'
       }
     },
   },

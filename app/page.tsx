@@ -1,21 +1,50 @@
-import Image from 'next/image'
-import logoLight from '@/public/logo.png'
-import logoDark from '@/public/logo_dark.png'
-import CountdownTimer from '@/components/Coundown'
-import { WaitList } from '@/components/WaitList'
+import { HomeBanner } from "@/components/home/Banner"
+import { FeaturedSection } from "@/components/home/Featured"
+import { HomeHowTo } from "@/components/home/HomeHowTo"
+import { HomeTechnology } from "@/components/home/HomeTechnology"
+import { Newsletter } from "@/components/home/Newsletter"
+import { Socials } from "@/components/home/Socials"
+import { Topics } from "@/components/home/Topics"
+import { client } from "./lib/sanity"
+import { Article } from "@/typings"
+import { Acitivities } from "@/components/home/Acitivities"
+import { HomeBannerPicture } from "@/components/home/HomeBannerPicture"
 
-export default function Home() {
+
+const fetchData = async () => {
+  const query = `*[_type == 'article']`
+  const data = await client.fetch(query)
+  return data
+}
+
+export default async function Home() {
+  const data = await fetchData() as Article[]
+
   return (
-    <main className=" h-screen flex items-center justify-center bg-[#fefff4] w-full">
-      <div className=" flex flex-col items-center space-y-10">
-        <div className=" h-[200px] w-[200px] border-[10px] ">
-          <Image src={logoLight} alt='Nillar logo' sizes='10' className=' h-full w-full object-center object-cover' />
-        </div>
-        <CountdownTimer />
-        <div className=" w-full">
-          <WaitList />
-        </div>
+    <main className="">
+      <div className="">
+        {/* <HomeBannerPicture /> */}
       </div>
+      <div className="py-10">
+        <HomeBanner />
+     </div>
+      <div className="w-full border dark:border-stone-500 border-line-color"></div>
+        <Socials />
+        <Topics />
+      <div className="w-full my-10 bg-banner dark:bg-stone-900 border-y border-line-color dark:border-stone-500 py-6">
+        <HomeHowTo />
+      </div>
+      <div className="my-10">
+         <FeaturedSection />
+      </div>
+      <div className="my-10">
+        <HomeTechnology />
+      </div>
+        <Newsletter />
+      <div className="my-10">
+        <Acitivities />
+      </div>
+
     </main>
   )
 }
