@@ -30,7 +30,7 @@ const fetchArticles = async () => {
 export const Topic = async ({ single }: any) => {
     const articles = await fetchArticles() as Article[];
     return (
-        <div className=" flex flex-col border border-line-color dark:border-dark-shade-bright px-8 py-8 space-y-4">
+        <div className=" flex flex-col border dark:border-dark-shade-bright lg:px-4 py-8 space-y-4">
         <div className=" border-b border-dark-shade-bright">
              <h3 className=" font-header text-2xl uppercase">{single}</h3>
         </div>
@@ -45,13 +45,13 @@ export const Topic = async ({ single }: any) => {
                             <div className=" flex space-x-4">
                                  <Image src={urlForImage(item.coverImage).url()} alt={''} height={1000} width={1000} className=" h-20 flex-none object-cover w-20 bg-yellow-200" />
                              <div className="">
-                                <Link href={''} className=" font-semibold hover:underline font-keisei">{ item.title}</Link>
+                                <Link href={''} className=" font-semibold hover:underline line-clamp-2 font-keisei">{ item.title}</Link>
                              </div>
                             </div>
 
                             <div className=" w-full flex items-center justify-between">
                                  <p>2 Days</p>
-                                 <Link href={item.slug.current} className=" bg-primary-light/30 font-keisei px-4 py-1">Learn more</Link>
+                                 {/* <Link href={item.slug.current} className=" bg-primary-light font-keisei px-4 py-1">Learn more</Link> */}
                             </div>
                          </div>
                         }

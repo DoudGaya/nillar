@@ -9,10 +9,11 @@ import { client } from "./lib/sanity"
 import { Article } from "@/typings"
 import { Acitivities } from "@/components/home/Acitivities"
 import { HomeBannerPicture } from "@/components/home/HomeBannerPicture"
+import { groq } from "next-sanity"
 
 
 const fetchData = async () => {
-  const query = `*[_type == 'article']`
+  const query = groq`*[_type == 'article']`
   const data = await client.fetch(query)
   return data
 }
@@ -22,9 +23,6 @@ export default async function Home() {
 
   return (
     <main className="">
-      <div className="">
-        {/* <HomeBannerPicture /> */}
-      </div>
       <div className="py-10">
         <HomeBanner />
      </div>

@@ -51,9 +51,9 @@ export const HomeTechnology = async () => {
                                             <Link href={''} className=" font-semibold line-clamp-2 hover:underline font-keisei text-lg ">
                                                {s.title}
                                             </Link> 
-                                            <div className=" line-clamp-2 font-newsreader">
-                                               {s.overview}
-                                            </div>
+                                        <div className=" line-clamp-2 font-newsreader">
+                                                {s.overview}
+                                        </div>
                                         </div>
                                 </div>
                             )
@@ -72,7 +72,6 @@ export const HomeTechnology = async () => {
                             return (
                         <div key={more._id} className=" flex-col border-b border-primary space-y-2 py-3 ">
                             <div className=" flex space-x-4">
-                            <div className="h-20 flex-none w-20 bg-purple-700"></div>
                                  <Image src={urlForImage(more.coverImage).url()} width={1000} height={1000} alt={'Latest Tech news'} className=" h-[100px] w-[100px] bg-yellow-200" />
                                     <div className=" flex flex-col">
                                     <p className=' text-xs'></p>

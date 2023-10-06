@@ -65,25 +65,25 @@ export const socials = [
     {
         id: 1,
         name: 'Facebook',
-        url: 'https://web.facebook.com/nillarmag',
+        url: 'https://web.facebook.com/nillarworld',
         icons: <CiFacebook size={30} />
     },
     {
         id: 2,
         name: 'Twitter',
-        url: '',
+        url: 'https://twitter.com/nillar',
         icons: <CiTwitter size={30} />
     },
     {
         id: 3,
         name: 'Linkedln',
-        url: '',
+        url: 'https://www.linkedin.com/company/nillar/',
         icons: <CiLinkedin size={30} />
     },
     {
         id: 4,
         name: 'instagram',
-        url: '',
+        url: 'https://instagram.com/nillarworld/',
         icons: <CiInstagram size={30} />
     },
 ]

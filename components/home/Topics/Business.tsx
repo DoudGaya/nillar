@@ -2,6 +2,10 @@ import React from 'react'
 
 export const Business = () => {
   return (
-    <div>Business</div>
+    <div className=' my-[200px]'>
+      <div className="">
+        Some more items
+      </div>
+    </div>
   )
 }
