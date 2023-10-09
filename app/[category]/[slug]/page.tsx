@@ -1,7 +1,7 @@
 import React from 'react'
 import { client } from '@/app/lib/sanity'
 import { groq } from 'next-sanity'
-import { Article, Slug } from '@/typings'
+import { Article, News } from '@/typings'
 import { ArticleBanner } from '@/components/articles/ArticleBanner'
 import { Contents } from '@/components/articles/Contents'
 import category from '@/sanity/schema/category'
@@ -36,7 +36,7 @@ const fetchAll = async ( type: string ) => {
 
 const Category = async ({params}: {params: {slug: string, category: string}}) => {
   const article = await fetchArticle(params.slug, params.category) as Article;
-  const all = await fetchAll(params.category) as Article[];
+  const all = await fetchAll(params.category) as News[];
 
 
   return (
