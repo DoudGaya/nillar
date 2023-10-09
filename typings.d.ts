@@ -25,7 +25,7 @@ interface Article extends Base {
 
 interface News extends Base {
     author: Author;
-    body: Block[];
+    content: Block[];
     tags: Tags[]
     category: Category;
     imageSource: string

@@ -31,7 +31,6 @@ export const Newsletter = () => {
     setSubmitter(!submitter); 
 }
 
-
   return (
       <div className=' bg-banner py-10 my-10 px-10 w-full dark:bg-stone-800 border-y border-line-color dark:border-stone-500'>
           <div className=" max-w-3xl flex mx-auto text-center justify-center space-y-8 flex-col">
@@ -44,7 +43,7 @@ export const Newsletter = () => {
                   </div>
                   {errors.email && <small className=' text-base font-keisei text-red-500/70'> {'Please insert your email to subscribe'} </small>}
           </form>
-          : <p className=' text-2xl font-header'> Thanks for your Subscription </p>
+          : <p className=' text-2xl font-header'> Thanks for your Subscription</p>
           }
           
           </div>
