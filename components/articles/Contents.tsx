@@ -1,5 +1,5 @@
 'use client'
-import { Article } from '@/typings'
+import { Article, News } from '@/typings'
 import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import { RiTwitterXFill } from 'react-icons/ri'
@@ -50,7 +50,7 @@ interface SocialLinks {
 //   }
 // ]
 
-export const Contents = ({ article, all }: { article: Article, all: Article[] }) => {
+export const Contents = ({ article, all }: { article: Article, all: News[] }) => {
 
 
   const PortableTextBox = {
@@ -77,7 +77,7 @@ export const Contents = ({ article, all }: { article: Article, all: Article[] })
               </div> 
         <div className= " flex flex-col space-y-4">
           {
-          all.map((single: Article) => {
+          all.map((single: News) => {
               return (
                 <Link key={single._id}  href={`/${single._type}/${single?.slug?.current}`} >
                   <div  className=' border-b flex items-end dark:bg-dark-shade-bright bg-[rgb(235,235,235)] px-3 py-4 dark:border-b-primary-light/50 border-gray-300 dark:border-dark-shade-bright'>
@@ -96,7 +96,7 @@ export const Contents = ({ article, all }: { article: Article, all: Article[] })
           <div className=" flex bg-primary flex-col dark:bg-dark-shade-bright rounded-lg items-start space-y-2 lg:items-center lg:flex-row px-6 py-4 justify-between">
             <div className="flex w-full  space-x-2 flex-row items-center">
               {/* <Link href={`/author/${article?.author.slug.current}`} className='font-sans font-semibold pr-2 text-md'>{article.author?.name}</Link> |  */}
-              <Link href={``} className='font-sans font-semibold pr-2 text-md'>{article.author?.name}</Link> | 
+              <Link href={``} className='font-sans font-semibold pr-2 text-md'>{article?.author?.name}</Link> | 
               <Link href={`https://twitter.com/${article.author?.twitter}`} target='_blank' className=' hover:bg-stone-400 rounded-md p-1'>
                 <RiTwitterXFill />
               </Link>
@@ -155,7 +155,7 @@ export const Contents = ({ article, all }: { article: Article, all: Article[] })
               </div> 
         <div className= " flex flex-col space-y-4">
           {
-          all.map((single: Article) => {
+          all.map((single: News) => {
               return (
                 <Link key={single._id} href={`/${single._type}/${single?.slug?.current}`} >
                   <div  className=' border-b flex items-end dark:bg-dark-shade-bright bg-[rgb(235,235,235)] px-3 py-4 dark:border-b-primary-light/50 border-gray-300 dark:border-dark-shade-bright'>
