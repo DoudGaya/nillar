@@ -11,11 +11,14 @@ type Base = {
 
 interface Article extends Base {
     author: Author;
-    body: Block[];
+    content: Block[];
     tags: Tags[]
     category: Category;
     coverImage: Image;
     slug: Slug;
+    imageSource: string
+    twitter: string;
+    linkedin: string
     title: string;
     overview: string;
 }
@@ -25,6 +28,7 @@ interface News extends Base {
     body: Block[];
     tags: Tags[]
     category: Category;
+    imageSource: string
     coverImage: Image;
     slug: Slug;
     title: string;
@@ -35,12 +39,16 @@ interface Author extends Base {
     bio: Block[]
     image: Image;
     name: string;
+    linkedin: string;
+    twitter: string;
     slug: Slug;
 }
 
 interface Editor extends Base {
     bio: Block[]
     image: Image;
+    linkedin: string
+    twitter: string
     name: string;
     slug: Slug;
 }

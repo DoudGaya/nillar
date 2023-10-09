@@ -45,13 +45,13 @@ export const Topic = async ({ single }: any) => {
                             <div className=" flex space-x-4">
                                  <Image src={urlForImage(item.coverImage).url()} alt={''} height={1000} width={1000} className=" h-20 flex-none object-cover w-20 bg-yellow-200" />
                              <div className="">
-                                <Link href={''} className=" font-semibold hover:underline line-clamp-2 font-keisei">{ item.title}</Link>
+                                <Link href={`/article/${item.slug?.current}`} className=" font-semibold hover:underline line-clamp-2 font-keisei">{ item.title}</Link>
                              </div>
                             </div>
 
                             <div className=" w-full flex items-center justify-between">
                                  <p>2 Days</p>
-                                 {/* <Link href={item.slug.current} className=" bg-primary-light font-keisei px-4 py-1">Learn more</Link> */}
+                                 <Link href={item.slug.current} className=" bg-primary-light font-keisei px-4 py-1">Learn more</Link>
                             </div>
                          </div>
                         }

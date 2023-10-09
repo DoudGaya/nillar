@@ -30,10 +30,7 @@ const fetchMoreTech = async () => {
 export const HomeTechnology = async () => {
 
     const techArticles = await fetchingTech() as Article[];
-
     const moreTech = await fetchMoreTech() as News[]
-
-    console.log(moreTech)
 
     return (
     <div className=" max-w-6xl mx-auto px-10">
@@ -48,7 +45,7 @@ export const HomeTechnology = async () => {
                                         <Image src={urlForImage(s.coverImage).url()} width={1000} height={1000} alt='' className=' object-cover object-center h-full w-full' />
                                     </div>
                                         <div className=" py-4 bg-stone-200 dark:bg-stone-800 space-y-6 px-2">
-                                            <Link href={''} className=" font-semibold line-clamp-2 hover:underline font-keisei text-lg ">
+                                            <Link href={`/news/${s.slug.current}`} className="font-semibold line-clamp-2 hover:underline font-keisei text-lg ">
                                                {s.title}
                                             </Link> 
                                         <div className=" line-clamp-2 font-newsreader">
@@ -75,8 +72,7 @@ export const HomeTechnology = async () => {
                                  <Image src={urlForImage(more.coverImage).url()} width={1000} height={1000} alt={'Latest Tech news'} className=" h-[100px] w-[100px] bg-yellow-200" />
                                     <div className=" flex flex-col">
                                     <p className=' text-xs'></p>
-                                <Link href={`/${more.slug.current}`} className=" font-semibold hover:underline font-keisei">{more.title}</Link>
-                                
+                                <Link href={`/news/${more.slug.current}`} className=" font-semibold hover:underline font-keisei">{more.title}</Link>
                              </div>
                             </div>
                          </div>

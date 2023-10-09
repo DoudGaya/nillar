@@ -16,6 +16,11 @@ export const news = {
                 ]
         },
         {
+            name: 'imageSource',
+            type: 'string',
+            title: 'Image Source',
+        },
+        {
             name: 'title',
             type: 'string',
             title: 'Title',
@@ -34,7 +39,7 @@ export const news = {
                 maxLength: 96,
             }
         },
-         {
+        {
             name: 'category',
             title: 'category',
             type: 'reference',
@@ -42,13 +47,19 @@ export const news = {
                 type: 'category'
             }
         },
-
+        {
+            name: 'author',
+            title: 'Author',
+            type: 'reference',
+            to: {type: 'author'},
+        },
         {
             name: 'tags',
             title: 'Tags',
             type: 'array',
             of: [{type: 'reference', to: {type: 'tags'}}],
         },
+
         {
             name: 'content',
             type: 'array',

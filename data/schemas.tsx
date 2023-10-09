@@ -3,75 +3,17 @@ import {CiLinkedin} from 'react-icons/ci'
 import {CiTwitter} from 'react-icons/ci'
 import { CiFacebook } from 'react-icons/ci'
 
-
-export const bannerItems = [
-    {
-      id: 1,
-      title: 'Mack Zuckerberg defeats Elon Musk in combat',
-      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
-      author: 'John Doe'
-    },
-    {
-      id: 2,
-      title: 'Mack Zuckerberg defeats Elon Musk in combat',
-      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
-      author: 'Abdulaziz Jibril'
-    },
-    {
-      id: 3,
-      title: 'Mack Zuckerberg defeats Elon Musk in combat',
-      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
-      author: 'Jabir Barau'
-    },
-    {
-      id: 4,
-      title: 'Mack Zuckerberg defeats Elon Musk in combat',
-      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
-      author: 'Omar Turaki'
-    },
-    
- 
-  ]
-
-  export const topicItems = [
-    {
-      id: 1,
-      title: 'Mack Zuckerberg defeats Elon Musk in combat',
-      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
-      author: 'Abdulaziz Jibril'
-    },
-    {
-      id: 2,
-      title: 'Mack Zuckerberg defeats Elon Musk in combat',
-      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
-      author: 'Abdulaziz Jibril'
-    },
-    {
-      id: 3,
-      title: 'Mack Zuckerberg defeats Elon Musk in combat',
-      body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
-      author: 'Abdulaziz Jibril'
-    },
-    {
-        id: 4,
-        title: 'Mack Zuckerberg defeats Elon Musk in combat',
-        body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...',
-        author: 'Abdulaziz Jibril'
-      },
-]
-  
-
 export const socials = [
     {
         id: 1,
         name: 'Facebook',
-        url: 'https://web.facebook.com/nillarworld',
+        url: 'https://web.facebook.com/nillarmagazines',
         icons: <CiFacebook size={30} />
     },
     {
         id: 2,
         name: 'Twitter',
-        url: 'https://twitter.com/nillar',
+        url: 'https://twitter.com/magazines',
         icons: <CiTwitter size={30} />
     },
     {
@@ -83,7 +25,7 @@ export const socials = [
     {
         id: 4,
         name: 'instagram',
-        url: 'https://instagram.com/nillarworld/',
+        url: 'https://instagram.com/nillarmagazines/',
         icons: <CiInstagram size={30} />
     },
 ]

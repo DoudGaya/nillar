@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'next/link'
-import { topicItems } from '@/data/schemas'
 import { groq } from 'next-sanity'
 import { client } from '@/app/lib/sanity'
 import { Article } from '@/typings'
@@ -19,11 +18,9 @@ const fetchingBusinessArticles = async () => {
 export const Acitivities = async () => {
 
     const articles = await fetchingBusinessArticles() as Article[];
-
-    console.log(articles)
     return (
-    <div className=" max-w-6xl mx-auto px-10">
-        <h3 className=' text-3xl font-header my-10 py-2 border-line-color dark:border-stone-600 border-b '>BUSINESS NEWS</h3>
+    <div className=" max-w-6xl mx-auto ">
+        <h3 className=' text-3xl font-header my-10 px-8 py-2 border-line-color dark:border-stone-600 border-b '>BUSINESS NEWS</h3>
             <div className='flex h-full lg:space-x-6 space-y-6 lg:space-y-0 flex-col lg:flex-row'>
                  <div className=" lg:w-3/6  h-full border-t lg:border-t-0  border-line-color dark:border-stone-500">
                     <div className=" border-b px-6 border-line-color dark:border-stone-500">

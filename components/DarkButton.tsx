@@ -15,7 +15,7 @@ export const DarkButton = () => {
     }
 
     return (
-        <button className=' px-4 lg:px-4 py-2 lg:p-1 shadow-lg flex items-center justify-center space-x-3 border bg-stone-900 text-white dark:bg-stone-700 rounded-full' onClick={() => { setTheme(resolvedTheme === 'dark' ? 'light' : 'dark') }}>
+        <button className=' px-4 lg:px-4 py-2 lg:p-1 shadow-lg flex items-center justify-center space-x-3 bg-stone-900 text-white dark:bg-stone-700 rounded-full' onClick={() => { setTheme(resolvedTheme === 'dark' ? 'light' : 'dark') }}>
             <p className=' text-stone-200 flex-none text-md'> { resolvedTheme=== 'dark' ? 'Light' : 'Dark' }</p>
             {
                 resolvedTheme === 'dark' ?

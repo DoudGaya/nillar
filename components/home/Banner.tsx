@@ -59,7 +59,7 @@ export const HomeBanner = async () => {
           data.map((item: Article) => {
             return (
               <div key={item._id} className=" bg-banner w-full dark:bg-[#181701] py-4 space-y-2 px-4 border-t-2 border-dark-shade rounded-t-md flex flex-col ">
-                <Link href={`/articles/${item.slug.current }`} className=" font-keisei w-full line-clamp-2 dark:text-stone-200 text-stone-900 font-semibold hover:underline text-lg  ">{item.title}</Link>
+                <Link href={`/article/${item.slug.current }`} className=" font-keisei w-full line-clamp-2 dark:text-stone-200 text-stone-900 font-semibold hover:underline text-lg  ">{item.title}</Link>
                 <Link href={`/author/${ item.author.name }`} className=" font-newsreader text-md w-full dark:text-gray-500 text-gray-700 hover:underline"> <span className=" textgray-600 font-primary">By </span>{item.author.name} </Link>
             </div>
             )

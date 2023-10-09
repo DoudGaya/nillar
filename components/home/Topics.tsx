@@ -1,4 +1,3 @@
-import { topicItems } from "@/data/schemas"
 import { Topic } from "./Topics/Topic"
 
 

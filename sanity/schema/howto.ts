@@ -16,9 +16,34 @@ export const howTo = {
                 ]
         },
         {
+            name: 'imageSource',
+            type: 'string',
+            title: 'Title'
+        },
+        {
             name: 'title',
             type: 'string',
             title: 'Title',
+        },
+        {
+            name: 'tags',
+            title: 'Tags',
+            type: 'array',
+            of: [{type: 'reference', to: {type: 'tags'}}],
+        },
+        {
+            name: 'author',
+            title: 'Author',
+            type: 'reference',
+            to: {type: 'author'},
+        },
+        {
+            name: 'category',
+            title: 'category',
+            type: 'reference',
+            to: {
+                type: 'category'
+            }
         },
         {
             name: 'overview',

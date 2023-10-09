@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         read: ['Newsreader', 'serif'],
+        poppin: ['Poppins', 'serif'],
         keisei: ['Kaisei Decol', 'serif'],
         header: ['Fraunces', 'serif'],
         newsreader: ['Newsreader', 'serif']
@@ -17,12 +18,12 @@ module.exports = {
       }, 
       colors:{
         'banner': '#dbdada',
+        'primary-light': 'rgb(235,235,235)',
+        'primary':'rgb(219,218,218)',
         'dark-shade': '#0c0c0c',
         'dark-shade-bright': '#262626',
-        'primary-light': '#858652',
         'button-light': '#474747',
         'line-color' :'70600B',
-        'primary': 'rgb(112,96,10)'
       }
     },
   },

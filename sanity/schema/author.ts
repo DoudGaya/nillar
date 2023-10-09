@@ -10,6 +10,16 @@ export default defineType({
       title: 'Name',
       type: 'string',
     }),
+     defineField({
+      name: 'linkedin',
+      title: 'linkedin',
+      type: 'string',
+     }),
+    defineField({
+      name: 'twitter',
+      title: 'twitter',
+      type: 'string',
+    }),
     defineField({
       name: 'slug',
       title: 'Slug',

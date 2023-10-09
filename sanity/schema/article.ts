@@ -16,10 +16,16 @@ export const article = {
                 ]
         },
         {
+            name: 'imageSource',
+            type: 'string',
+            title: 'Image Source',
+        },
+        {
             name: 'title',
             type: 'string',
             title: 'Title',
         },
+
         {
             name: 'overview',
             type: 'string',
