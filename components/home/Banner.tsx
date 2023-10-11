@@ -1,7 +1,6 @@
 import { Article, News } from "@/typings"
 import { client } from "@/app/lib/sanity"
 import Image from "next/image"
-import { bannerItems } from "@/data/schemas"
 import { groq } from "next-sanity"
 import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
