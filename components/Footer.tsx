@@ -144,7 +144,7 @@ export const Footer = () => {
             <Image src={logo} alt='Nillar Logo' />
           </div>
           <div className=" border-y py-6 col-span-2 text-sm lg:py-2 font-keisei px-6 lg:border-l border-line-color dark:border-gray-500">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. quibusdam illo dicta nihil quo labore, eius vero facere amet culpa provident rem aspernatur nobis enim vitae ab libero sed.
+            Nillar is a financial magazine created to educate readers about business, finance, personal productivity and technology. We also share news and updates about related topics. Stay tuned
           </div>
           <div className=" col-span-1">
             <div className=" flex items-center h-full border-l border-line-color px-4 dark:border-stone-500">
