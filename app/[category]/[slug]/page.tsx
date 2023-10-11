@@ -25,6 +25,7 @@ const fetchArticle = async (slug: string, category: string) => {
 const fetchAll = async ( type: string ) => {
   const query = await groq`
   *[_type == '${type}']{
+    _id,
     title,
     slug,
     _type,
