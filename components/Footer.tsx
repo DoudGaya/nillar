@@ -151,7 +151,7 @@ export const Footer = () => {
                {
                         socials.map((item) => {
                             return (
-                                <Link href={item.url} className=' p-1 hover:bg-primary-light/60 rounded-lg'>
+                                <Link key={item.name} href={item.url} className=' p-1 hover:bg-primary-light/60 rounded-lg'>
                                     {item.icons}
                                 </Link>
                             )
