@@ -1,11 +1,9 @@
 import React from 'react'
-import { topicItems } from '@/data/schemas'
 import Link from 'next/link'
 import { groq } from 'next-sanity'
 import { client } from '@/app/lib/sanity'
 import { HowTo } from '@/typings'
 import Image from 'next/image'
-import { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder'
 import { urlForImage } from '@/sanity/lib/image'
 
 

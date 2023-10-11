@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'next/link'
-import { topicItems } from '@/data/schemas'
 import { groq } from 'next-sanity'
 import { client } from '@/app/lib/sanity'
 import { Article, News } from '@/typings'

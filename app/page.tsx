@@ -8,7 +8,6 @@ import { Topics } from "@/components/home/Topics"
 import { client } from "./lib/sanity"
 import { Article } from "@/typings"
 import { Acitivities } from "@/components/home/Acitivities"
-import { HomeBannerPicture } from "@/components/home/HomeBannerPicture"
 import { groq } from "next-sanity"
 
 
