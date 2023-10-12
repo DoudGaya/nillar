@@ -23,7 +23,7 @@ export const FeaturedSection = async () => {
     <div className="max-w-4xl mx-auto px-10">
              <h3 className=' text-3xl font-header my-10 py-2 border-line-color dark:border-stone-600 border-b '>FEATURED</h3>
       <div className=' flex h-full flex-col lg:flex-row'>
-            <div className=" lg:w-2/5 bg-yellow-200 flex border">
+            <div className=" lg:w-2/5 flex border">
                     <div className=" flex w-full h-full">
                         <Image src={urlForImage(featured.coverImage).url()} className=' flex h-full object-cover object-center  w-full' alt='' width={1000} height={1000} />
                     </div>                
