@@ -12,7 +12,7 @@ const fetchFeatured = async () => {
     const query = groq`
     *[_type == 'article'][0]
     `
-    const data = await client.fetch(query);
+    const data = await client.fetch(query, { next: { revalidate: 10 } });
     return data;
 }
 

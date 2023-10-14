@@ -20,7 +20,7 @@ const fetchArticles = async () => {
     _updatedAt
   }[0...5]
  `
-    const data = await client.fetch(query);
+    const data = await client.fetch(query, { next: { revalidate: 10 } });
     return (data);
 }
 
@@ -32,7 +32,9 @@ export const Topic = async ({ single }: any) => {
     return (
         <div className=" flex flex-col border dark:border-dark-shade-bright lg:px-4 py-8 space-y-4">
         <div className=" border-b border-dark-shade-bright">
-             <h3 className=" font-header text-2xl uppercase">{single}</h3>
+                <h3 className=" font-header text-2xl uppercase">
+                    {single}
+                </h3>
         </div>
             <div className=" flex space-y-6 flex-col">
              { 
@@ -43,15 +45,15 @@ export const Topic = async ({ single }: any) => {
                                 item.category?.title == single &&
                         <div key={item._id} className=" flex flex-col p-6 border-b border-primary space-y-2 py-3 ">
                             <div className=" flex space-x-4">
-                                 <Image src={urlForImage(item.coverImage).url()} alt={''} height={1000} width={1000} className=" h-20 flex-none object-cover w-20 bg-yellow-200" />
+                                 <Image src={urlForImage(item.coverImage).url()} alt={''} height={1000} width={1000} className="h-20 flex-none object-cover w-20" />
                              <div className="">
-                                <Link href={`/article/${item.slug?.current}`} className=" font-semibold hover:underline line-clamp-2 font-keisei">{ item.title}</Link>
+                                <Link href={`/article/${item.slug?.current}`} className=" font-semibold hover:underline line-clamp-2 font-keisei">{item.title}</Link>
                              </div>
                             </div>
 
                             <div className=" w-full flex items-center justify-between">
                                  <p>2 Days</p>
-                                 <Link href={item.slug.current} className=" bg-primary-light font-keisei px-4 py-1">Learn more</Link>
+                                 <Link href={item.slug.current} className="dark:bg-dark-shade-bright bg-primary-light font-keisei px-4 py-1">Learn more</Link>
                             </div>
                          </div>
                         }

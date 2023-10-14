@@ -11,7 +11,7 @@ const fetchingTech = async () => {
     const query = groq`*[_type == 'news' && references('7baf5faa-eb22-44f8-8345-3feef0e9e3e6')]
   [0...2] 
     `
-    const data = await client.fetch(query)
+    const data = await client.fetch(query, { next: { revalidate: 10 } })
     return data
 
 }
@@ -21,7 +21,7 @@ const fetchMoreTech = async () => {
   [2...6
   ] 
     `
-    const data = await client.fetch(query)
+    const data = await client.fetch(query, { next: { revalidate: 10 } })
     return data
 
 }

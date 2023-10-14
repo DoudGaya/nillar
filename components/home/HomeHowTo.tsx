@@ -21,7 +21,7 @@ const fetchHowTos = async () => {
             coverImage,
         }
     `
-    const howTos = await client.fetch(query)
+    const howTos = await client.fetch(query, { next: { revalidate: 10 } })
     return howTos
 }
 
@@ -54,7 +54,7 @@ export const HomeHowTo = async () => {
                   }
               </div>
                <div className=" flex justify-center">
-                  <Link href={''} className=' py-2 px-6 font-keisei font-semibold bg-stone-950 text-white '> MORE GUIDES.</Link>   
+                  <Link href={`/how-to`} className=' py-2 px-6 font-keisei font-semibold bg-stone-950 text-white '> MORE GUIDES.</Link>   
                 </div>
           </div>
     </div>

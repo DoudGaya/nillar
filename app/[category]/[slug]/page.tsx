@@ -18,7 +18,7 @@ const fetchArticle = async (slug: string, category: string) => {
     imageSource,
     content,
   } [0]`
-  const data = await client.fetch(query)
+  const data = await client.fetch(query, { next: { revalidate: 10 } })
   return data
 }
 
@@ -31,7 +31,7 @@ const fetchAll = async ( type: string ) => {
     _type,
     coverImage,
   }[0...10]`
-  const data = await client.fetch(query);
+  const data = await client.fetch(query, { next: { revalidate: 10 } });
   return data
 }
 

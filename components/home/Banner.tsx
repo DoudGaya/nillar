@@ -11,9 +11,9 @@ import { urlForImage } from "@/sanity/lib/image"
 
 const fetchNews = async () => {
   const query = groq`
-  *[_type == 'news']| order(_createdAt)  
+  *[_type == 'news']
   `
-  const data = await client.fetch(query);
+  const data = await client.fetch(query, { next: { revalidate: 10 } });
   return data[0]
 }
 

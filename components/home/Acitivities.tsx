@@ -8,10 +8,11 @@ import { urlForImage } from '@/sanity/lib/image'
 
 
 
-const fetchingBusinessArticles = async () => {
-    const query = groq`*[_type == 'news' && references('96886e79-a26f-4a28-add1-03781f081479')][0...7]
-    `
-    const data = await client.fetch(query)
+
+
+const fetchingBusinessArticles = async () => {    
+    const query = groq`*[_type == 'news' && references('96886e79-a26f-4a28-add1-03781f081479')][0...7]`
+    const data = await client.fetch(query, { next: { revalidate: 10 } })
     return data
 }
 
@@ -32,11 +33,10 @@ export const Acitivities = async () => {
                             return (
                         <div key={item._id} className=" flex-col border-b border-line-color px-6 space-y-2 py-3 ">
                             <div className=" flex  space-x-4">
-                                 <Image src={urlForImage(item.coverImage).url()} alt={'Image'} width={1000} height={1000} className=" h-[100px] w-[100px] bg-yellow-200" />
+                                 <Image src={urlForImage(item.coverImage).url()} alt={'Image'} width={1000} height={1000} className=" h-[100px] w-[100px]" />
                                     <div className=" flex flex-col justify-center">
                                         <p className=' text-xs'>2 Days </p>
-                                <Link href={''} className=" font-semibold hover:underline font-keisei">{item.title}</Link>
-                                
+                                <Link href={`/news/${item.slug.current}`} className=" font-semibold hover:underline font-keisei">{item.title}</Link>
                              </div>
                             </div>
                          </div>
@@ -53,8 +53,8 @@ export const Acitivities = async () => {
                                  <div key={s._id} className=" flex flex-col">
                                      <Image src={urlForImage(s.coverImage).url()} alt={'Image'} width={1000} height={1000} className=" h-[150px] w-full bg-yellow-200" />
                                         <div className=" py-2 bg-stone-200 dark:bg-stone-800 space-y-6 px-2">
-                                            <Link href={''} className=" font-semibold line-clamp-2 hover:underline font-keisei  ">
-                                                Google AI: Google Announce Bard to compete with the ChatGPT 
+                                            <Link href={`/news/${s.slug.current}`} className=" font-semibold line-clamp-2 hover:underline font-keisei  ">
+                                                {s.title}
                                             </Link> 
                                         </div>
                                 </div>
@@ -62,8 +62,6 @@ export const Acitivities = async () => {
                         } )
                     }
             </div>
-
-               
             </div>
      </div>
   )
