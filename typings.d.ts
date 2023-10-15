@@ -44,6 +44,12 @@ interface Author extends Base {
     slug: Slug;
 }
 
+interface Category extends Base {
+    title: string;
+    description: string;
+    slug: Slug;
+}
+
 interface Editor extends Base {
     bio: Block[]
     image: Image;
