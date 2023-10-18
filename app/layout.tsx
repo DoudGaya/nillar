@@ -8,6 +8,7 @@ import { Footer } from '@/components/Footer'
 import { MobileNav } from '@/components/MobileNav'
 import { MobileFooter } from '@/components/MobileFooter'
 import { MobileSideBar } from '@/components/MobileSideBar'
+import Script from 'next/script'
 import { NavContextProvider } from '@/components/context/MobileNavContext'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -63,7 +64,17 @@ export default function RootLayout({
           // @ts-ignore
           itemprop="keywords"
           content="business, finace, prodcuctivity, politics, tech, leadership, entrepreneurs, investing"
-         />
+        />
+        <Script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            
+            gtag('config', 'G-2G16ESXQ6W');
+          `}
+        </Script>
+          <Script async strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-2G16ESXQ6W"></Script>
       </Head>
       <body className={`${inter.className} bg-[rgb(242,242,242)] dark:bg-[rgb(14,16,0)]`}>
         <Providers>
