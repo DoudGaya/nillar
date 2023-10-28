@@ -13,7 +13,6 @@ const NavContextProvider = ({ children }: { children: ReactNode }) => {
     }
 
     return <NavContext.Provider value={{ changeNav, mobileNav }}> { children }</NavContext.Provider>
-
 }
 
 export {NavContextProvider, NavContext}

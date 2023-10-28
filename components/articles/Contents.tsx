@@ -76,7 +76,7 @@ export const Contents = ({ article, all }: { article: Article, all: News[] }) =>
                 </div>
               </div> 
         <div className= " flex flex-col space-y-4">
-          {
+          { all.length >= 0 ?
           all.map((single: News) => {
               return (
                 <Link key={single._id}  href={`/${single._type}/${single?.slug?.current}`} >
@@ -85,7 +85,10 @@ export const Contents = ({ article, all }: { article: Article, all: News[] }) =>
                   </div>
                 </Link>
               )
-            })
+          })
+              : ( 
+                <p> There are no available article here</p>
+               )
           }
         </div>
           </div>
@@ -97,16 +100,16 @@ export const Contents = ({ article, all }: { article: Article, all: News[] }) =>
             <div className="flex w-full  space-x-2 flex-row items-center">
               {/* <Link href={`/author/${article?.author.slug.current}`} className='font-sans font-semibold pr-2 text-md'>{article.author?.name}</Link> |  */}
               <Link href={``} className='font-sans font-semibold pr-2 text-md'>{article?.author?.name}</Link> | 
-              <Link href={`https://twitter.com/${article.author?.twitter}`} target='_blank' className=' hover:bg-stone-400 rounded-md p-1'>
+              <Link href={`https://twitter.com/${article?.author?.twitter}`} target='_blank' className=' hover:bg-stone-400 rounded-md p-1'>
                 <RiTwitterXFill />
               </Link>
-               <Link href={`${article.author?.linkedin}`} target='_blank' className=' hover:bg-stone-400 rounded-md p-1'>
+               <Link href={`${article?.author?.linkedin}`} target='_blank' className=' hover:bg-stone-400 rounded-md p-1'>
                 <FaLinkedinIn />
               </Link>
             </div>
 
             <div className="">
-              <Link href={`/${article.category.title}`} className=' uppercase underline border-b lg:border-b-0 hover:underline font-poppin font-semibold'>{article.category.title}</Link>
+              <Link href={`/${article?.category?.title}`} className=' uppercase underline border-b lg:border-b-0 hover:underline font-poppin font-semibold'>{article?.category?.title}</Link>
             </div>
             
           </div>

@@ -25,8 +25,6 @@ const fetchArticles = async () => {
 }
 
 
-
-
 export const Topic = async ({ single }: any) => {
     const articles = await fetchArticles() as Article[];
     return (

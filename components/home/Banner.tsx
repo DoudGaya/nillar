@@ -5,13 +5,9 @@ import { groq } from "next-sanity"
 import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
 
-
-
-
-
 const fetchNews = async () => {
   const query = groq`
-  *[_type == 'news']
+  *[_type == 'news'] | order(_createdAt desc)
   `
   const data = await client.fetch(query, { next: { revalidate: 10 } });
   return data[0]
@@ -23,10 +19,10 @@ const fetchArticles = async () => {
   ...,
   author->,
   categories[]->
-}
+}[0...4]
 `
 
-  const data = await client.fetch(query)
+  const data = await client.fetch(query, {next: { revalidate: 10 } })
   return data
 }
 
@@ -43,7 +39,7 @@ export const HomeBanner = async () => {
           <div className=" lg:col-span-4 w-full flex border-b border-gray-500 lg:border-none flex-col space-y-4">
             <div className=" h-[400px] overflow-hidden ">
               <Link href={`news/${news.slug.current}`}>
-                <Image className=" h-full w-full rounded-xl" src={urlForImage(news.coverImage).url()} width={1000} height={1000} alt="" />
+                <Image className=" object-cover object-center h-full w-full" src={urlForImage(news.coverImage).url()} width={1000} height={1000} alt="" />
 
               </Link>
             </div>
@@ -57,9 +53,9 @@ export const HomeBanner = async () => {
         { data.length > 0 ?
           data.map((item: Article) => {
             return (
-              <div key={item._id} className=" bg-banner w-full dark:bg-[#181701] py-4 space-y-2 px-4 border-t-2 border-dark-shade rounded-t-md flex flex-col ">
-                <Link href={`/article/${item.slug.current }`} className=" font-keisei w-full line-clamp-2 dark:text-stone-200 text-stone-900 font-semibold hover:underline text-lg  ">{item.title}</Link>
-                <Link href={`/author/${ item.author.name }`} className=" font-newsreader text-md w-full dark:text-gray-500 text-gray-700 hover:underline"> <span className=" textgray-600 font-primary">By </span>{item.author.name} </Link>
+              <div key={item._id} className=" bg-white w-full dark:bg-dark-shade-bright py-4 space-y-2 px-4 border-b border-dark-shade flex flex-col ">
+                <Link href={`/article/${item.slug.current }`} className=" font-keisei w-full line-clamp-2 dark:text-stone-200 text-stone-900 font-semibold hover:underline  ">{item.title}</Link>
+                <Link href={`/author/${ item.author.name }`} className=" font-newsreader text-md w-full dark:text-gray-500 text-gray-700 hover:underline"><span className=" font-sans">{item.author.name}</span> </Link>
             </div>
             )
           })

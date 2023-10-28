@@ -1,5 +1,5 @@
 export const howTo = {
-    name: 'howTo',
+    name: 'how-to',
     type: 'document',
     title: 'how To',
     fields: [
@@ -18,7 +18,7 @@ export const howTo = {
         {
             name: 'imageSource',
             type: 'string',
-            title: 'Title'
+            title: 'image Source'
         },
         {
             name: 'title',

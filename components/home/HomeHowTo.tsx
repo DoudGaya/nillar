@@ -13,6 +13,8 @@ const fetchHowTos = async () => {
         *[_type == 'howTo'] {
             _id, 
             title,
+            category->,
+            author->,
             slug {
                 current
             },
@@ -41,11 +43,11 @@ export const HomeHowTo = async () => {
                                 <Link href={`/how-to/${single.slug.current}`}>
                                     <Image src={urlForImage(single.coverImage).url()} className=' object-cover object-center h-[200px] w-full' height={1000} width={1000} alt={''} />
                                 </Link>
-                            <div className=" font-keisei bg-[#F7F7F7] dark:bg-stone-950 space-y-6  p-2 flex flex-col">
+                            <div className=" font-keisei bg-[#F7F7F7] dark:bg-stone-950 space-y-6 p-4 flex flex-col">
                                 <Link href={`/how-to/${single.slug.current}`} className='font-semibold text-sm  hover:underline'>{single.title}</Link>
                                 <div className="justify-between items-center text-sm flex ">
                                     <span>{ new Date(single._createdAt).toISOString().split('T')[0] }</span>
-                                    <Link className=' dark:bg-stone-600 bg-primary-light text-white px-4 py-1' href={`/how-to/${single.slug.current}`}>Learn More</Link>
+                                    <Link className=' dark:bg-stone-600 bg-primary-light px-4 py-1' href={`/how-to/${single.slug.current}`}>Learn More</Link>
                                 </div>
                             </div>
                             </div>
