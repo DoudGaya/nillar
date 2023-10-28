@@ -10,7 +10,7 @@ import { urlForImage } from '@/sanity/lib/image'
 
 const fetchHowTos = async () => {
     const query = groq`
-        *[_type == 'howTo'] {
+        *[_type == 'how-to'] {
             _id, 
             title,
             category->,
@@ -35,15 +35,15 @@ export const HomeHowTo = async () => {
               <div className=" flex place-items-center ">
                   <h3 className=' font-keisei text-2xl font-semibold'>HOW TO GUIDES</h3>
               </div>
-              <div className="grid grid-col-1 md:grid-cols-2 gap-6 lg:grid-cols-4">
+              <div className="grid grid-col-1 bg-purple-50/40 md:grid-cols-2 gap-y-6 lg:grid-cols-4">
                 {
                     howtoArticles.map( (single: HowTo) => {
                         return (
-                            <div className=" border dark:border-stone-500 border-line-color " key={single._id}>
+                            <div className="border-line-color bg-pink-400/40/" key={single._id}>
                                 <Link href={`/how-to/${single.slug.current}`}>
                                     <Image src={urlForImage(single.coverImage).url()} className=' object-cover object-center h-[200px] w-full' height={1000} width={1000} alt={''} />
                                 </Link>
-                            <div className=" font-keisei bg-[#F7F7F7] dark:bg-stone-950 space-y-6 p-4 flex flex-col">
+                            <div className=" font-keisei bg-[#F7F7F7] dark:bg-stone-950 space-y-6 py-6 px-2 flex flex-col">
                                 <Link href={`/how-to/${single.slug.current}`} className='font-semibold text-sm  hover:underline'>{single.title}</Link>
                                 <div className="justify-between items-center text-sm flex ">
                                     <span>{ new Date(single._createdAt).toISOString().split('T')[0] }</span>

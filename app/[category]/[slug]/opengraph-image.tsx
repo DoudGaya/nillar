@@ -24,13 +24,11 @@ export default async function Image({ params }: {
  
   return new ImageResponse(
     (
-        <div tw=' flex flex-col'>
-        <img src={urlForImage(article.coverImage).url()} alt={'Nillar Magazines'} />      
+        <div tw='flex flex-col'> 
+        <img src={urlForImage(article.coverImage).url()} tw=' flex w-full flex-1 object-cover object-center' alt={'Nillar Magazines'} />      
         <div tw=" flex flex-col space-y-3 bg-primary-light dark:bg-dark-shade">
             <p tw=' font-header text-lg'>{article?.title}</p>
-            <p tw=' font-newsreader line-clamp-2'>
-                {article?.overview}
-            </p>
+            <p tw=' font-newsreader line-clamp-2'> {article?.overview}</p>
         </div>
       </div>
     ),

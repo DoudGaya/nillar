@@ -6,18 +6,9 @@ import { RiTwitterXFill } from 'react-icons/ri'
 import Image from 'next/image'
 import {FaLinkedinIn} from 'react-icons/fa'
 import { urlForImage } from '@/sanity/lib/image'
-import {BiLogoFacebook} from 'react-icons/bi'
-import { PortableText } from '@portabletext/react'
-import { BiLogoInstagram } from 'react-icons/bi'
-import { socials } from '@/data/schemas'
 
-import {
-  FacebookShareButton,
-  LinkedinShareButton,
-  TelegramShareButton,
-  TwitterShareButton,
-  WhatsappShareButton,
-} from "react-share";
+import { PortableText } from '@portabletext/react'
+import { socials } from '@/data/schemas'
 
 
 interface SocialLinks {
@@ -26,29 +17,6 @@ interface SocialLinks {
   url: string;
   icons: ReactNode
 }
-
-// const socials = [
-//   {
-//     title: 'instagram',
-//     url: '',
-//     button: '' ,
-//   },
-//   {
-//     title: 'twitter',
-//     url: '',
-//     button: '',
-//   },
-//   {
-//     title: 'linkedin',
-//     url: '',
-//     button: '',
-//   },
-//   {
-//     title: 'facebook',
-//     url: '',
-//     button: '',
-//   }
-// ]
 
 export const Contents = ({ article, all }: { article: Article, all: News[] }) => {
 
@@ -87,7 +55,7 @@ export const Contents = ({ article, all }: { article: Article, all: News[] }) =>
               )
           })
               : ( 
-                <p> There are no available article here</p>
+                <p>There are no available article here</p>
                )
           }
         </div>
