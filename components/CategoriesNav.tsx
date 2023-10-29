@@ -6,9 +6,14 @@ import Link from 'next/link'
 import React from 'react'
 
 
-const fetchCategory = async () => {
-
-    const query = await groq`*[_type == 'category']`
+export const fetchCategory = async () => {
+    const query = await groq`*[_type == 'category'] {
+        _id,
+        slug {
+            current
+        },
+        title
+    } `
     const data = await client.fetch(query,  { next: { revalidate: 10 }})
     return data
 }
@@ -20,11 +25,11 @@ export const CategoriesNav = async () => {
             <div className=" px-4 flex justify-between items-center">
                 {
                     categories.map((single: Category) => {
-                        return <Link href={`/${single.slug?.current}`} className=' px-2 py-2 flex hover:border-b-2 hover:border-black  dark:hover:bg-dark-shade-bright justify-center w-full'>
-                            <span>{single.title}</span>
+                        return <Link href={`/${single.slug?.current}`} key={single._id} className=' px-2 py-2 flex border-b-2 border-transparent hover:border-black dark:hover:border-slate-400 dark:hover:bg-dark-shade-bright justify-center w-full'>
+                            <span>{ single.title }</span>
                         </Link>
                     })
-            }
+                }
             </div>
         </div>
   )

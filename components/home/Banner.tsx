@@ -40,22 +40,20 @@ export const HomeBanner = async () => {
             <div className=" h-[400px] overflow-hidden ">
               <Link href={`news/${news.slug.current}`}>
                 <Image className=" object-cover object-center h-full w-full" src={urlForImage(news.coverImage).url()} width={1000} height={1000} alt="" />
-
               </Link>
             </div>
             <Link href={`news/${news.slug.current}`} className=" text-xl font-keisei hover:underline"> {news.title} </Link>
             <p className=" line-clamp-2 font-newsreader"> { news.overview} </p>
           </div>
-
           <div className=" lg:col-span-2 ">
           
-    <div className=" grid grid-cols-1 w-full space-y-4  ">
+    <div className=" grid grid-cols-1 w-full space-y-4">
         { data.length > 0 ?
           data.map((item: Article) => {
             return (
-              <div key={item._id} className=" bg-white w-full dark:bg-dark-shade-bright py-4 space-y-2 px-4 border-b border-dark-shade flex flex-col ">
-                <Link href={`/article/${item.slug.current }`} className=" font-keisei w-full line-clamp-2 dark:text-stone-200 text-stone-900 font-semibold hover:underline  ">{item.title}</Link>
-                <Link href={`/author/${ item.author.name }`} className=" font-newsreader text-md w-full dark:text-gray-500 text-gray-700 hover:underline"><span className=" font-sans">{item.author.name}</span> </Link>
+              <div key={item._id} className="bg-white w-full dark:bg-dark-shade-bright py-4 space-y-2 px-4 border-b border-dark-shade flex flex-col ">
+                <Link href={`/article/${item.slug.current }`} className="font-keisei w-full line-clamp-2 dark:text-stone-200 text-stone-900 font-semibold hover:underline  ">{item.title}</Link>
+                <Link href={`/author/${ item.author.name }`} className="font-newsreader text-md w-full dark:text-gray-500 text-gray-700 hover:underline"><span className=" font-sans">{item.author.name}</span> </Link>
             </div>
             )
           })

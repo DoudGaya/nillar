@@ -87,7 +87,7 @@ const Category = async ({ params }:
 
 
   return (
-    <div className='py-20'>
+    <div className=''>
         <ArticleBanner category={params.category} />
       <div className="max-w-6xl mx-auto">
         <Contents article={article} all={all} />

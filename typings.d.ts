@@ -44,10 +44,18 @@ interface Author extends Base {
     slug: Slug;
 }
 
+interface SocialLinks {
+  id: number;
+  name: string;
+  url: string;
+  icons: ReactNode
+}
+
 interface Category extends Base {
     title: string;
     description: string;
     slug: Slug;
+    articles: Article[]
 }
 
 interface Editor extends Base {

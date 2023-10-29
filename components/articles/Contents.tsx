@@ -9,14 +9,8 @@ import { urlForImage } from '@/sanity/lib/image'
 
 import { PortableText } from '@portabletext/react'
 import { socials } from '@/data/schemas'
+import { ArticleSocialLinks } from '../SocialLinks'
 
-
-interface SocialLinks {
-  id: number;
-  name: string;
-  url: string;
-  icons: ReactNode
-}
 
 export const Contents = ({ article, all }: { article: Article, all: News[] }) => {
 
@@ -32,7 +26,7 @@ export const Contents = ({ article, all }: { article: Article, all: News[] }) =>
   return (
     <div className='grid w-full grid-cols-1 px-8 lg:grid-cols-4 py-10 gap-8'>
       <div className=" w-full h-full ">
-         <div className=" xl:flex-col py-6 space-y-6 hidden xl:flex">
+         <div className=" xl:flex-col space-y-6 hidden xl:flex">
               <div className=" border-b border-dark-shade-bright">
                   <div className=" flex flex-row pb-4 dark:bg-dark-shade border-b border-gray-300  rounded-sm ">
                       <input type="search" placeholder='Search Articles' className=' font-newsreader w-full dark:bg-dark-shade-bright bg-gray-200 outline-none py-3 px-3 rounded-sm ' />
@@ -62,10 +56,10 @@ export const Contents = ({ article, all }: { article: Article, all: News[] }) =>
           </div>
          </div>
       <div className=" lg:col-span-2">
-        <div className=" flex flex-col space-y-6">
+        <div className=" flex flex-col space-y-4">
           <h1 className=' font-header text-2xl lg:text-3xl ' >{article?.title}</h1>
-          <div className=" flex bg-primary flex-col dark:bg-dark-shade-bright rounded-lg items-start space-y-2 lg:items-center lg:flex-row px-6 py-4 justify-between">
-            <div className="flex w-full  space-x-2 flex-row items-center">
+          <div className=" flex bg-primary flex-col dark:bg-dark-shade-bright items-start space-y-2 lg:items-center lg:flex-row px-6 py-3 justify-between">
+            <div className="flex w-full space-x-2 flex-row items-center">
               {/* <Link href={`/author/${article?.author.slug.current}`} className='font-sans font-semibold pr-2 text-md'>{article.author?.name}</Link> |  */}
               <Link href={``} className='font-sans font-semibold pr-2 text-md'>{article?.author?.name}</Link> | 
               <Link href={`https://twitter.com/${article?.author?.twitter}`} target='_blank' className=' hover:bg-stone-400 rounded-md p-1'>
@@ -93,24 +87,9 @@ export const Contents = ({ article, all }: { article: Article, all: News[] }) =>
           </div>
         </div>
       </div>
-
-
      
       <div className=" ">
-        <div className=" flex flex-col w-full bg-primary-light dark:bg-dark-shade-bright py-6 px-4 rounded-xl space-y-8  ">
-            <p className=' font-header text-2xl border-b pb-3 '>Follow US </p>
-              <div className=" grid grid-cols-4">
-                  {
-              socials.map((s: SocialLinks) => {
-                return (
-                  <Link key={s.id} href={s.url}>
-                    {s.icons}
-                  </Link>
-                      )
-                    })
-                  }
-              </div>        
-             </div>
+          <ArticleSocialLinks />
       </div>
        <div className=" w-full h-full ">
          <div className=" xl:flex-col py-6 space-y-6 lg:hidden flex flex-col">
