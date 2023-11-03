@@ -8,7 +8,7 @@ import { Contents } from '@/components/articles/Contents'
 
 
 
-export async function generateMetadata({ params }: {
+async function generateMetadata({ params }: {
   params: {
     slug: string
     category: string
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: {
 
 
 
-export const fetchArticle = async (slug: string, category: string) => {
+const fetchArticle = async (slug: string, category: string) => {
   const query = await groq`
   *[_type == "${category}" && slug.current == "${slug}" ] {
     ...,
