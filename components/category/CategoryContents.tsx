@@ -35,8 +35,7 @@ export const CategoryContents = async ({ category }: {
 
   const datas = await fetchSingleCategory(category) as Category
   const restOfCategories = datas.articles.slice(1)
-
-
+  
    const PortableTextBox = {
     types: {
       image: ({value}: {value: any}) => {
@@ -46,9 +45,6 @@ export const CategoryContents = async ({ category }: {
   }
 
   const allCategories = await fetchCategory()
-
-
-
   return (
       <div className='grid w-full grid-cols-1 px-8 lg:grid-cols-4 py-10 gap-8'>
       <div className=" w-full h-full ">
