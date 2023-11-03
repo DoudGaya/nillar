@@ -1,7 +1,24 @@
 import { ImageResponse } from 'next/server'
-import { fetchArticle } from './page'
 import { Article } from '@/typings'
 import { urlForImage } from '@/sanity/lib/image'
+import { client } from '@/app/lib/sanity'
+import { groq } from 'next-sanity'
+
+
+const fetchArticle = async (slug: string, category: string) => {
+  const query = await groq`
+  *[_type == "${category}" && slug.current == "${slug}" ] {
+    ...,
+    author->,
+    slug->,
+    category->,
+    imageSource,
+    content,
+  } [0]`
+  const data = await client.fetch(query, { next: { revalidate: 10 } })
+  return data
+}
+
  
 export const runtime = 'edge'
  
