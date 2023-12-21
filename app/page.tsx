@@ -22,7 +22,7 @@ export default async function Home() {
 
   return (
     <main className="">
-      <div className="py-10">
+      <div className="">
         <HomeBanner />
      </div>
       <div className="w-full border dark:border-stone-500 border-line-color"></div>

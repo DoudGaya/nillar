@@ -32,7 +32,7 @@ export const HomeBanner = async () => {
 
   const news = await fetchNews() as News;
     return (
-        <div className=" max-w-[1200px] mx-auto px-10 w-full flex flex-col py-16">
+        <div className=" max-w-[1200px] mx-auto px-10 w-full flex flex-col ">
         <h2 className=' text-2xl lg:text-3xl font-read py-6'>LATEST</h2>
         <div className=" grid gap-y-12 grid-cols-1 w-full gap-x-10 lg:grid-cols-6">
 

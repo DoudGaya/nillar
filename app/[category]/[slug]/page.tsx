@@ -4,56 +4,87 @@ import { groq } from 'next-sanity'
 import { Article, News } from '@/typings'
 import { ArticleBanner } from '@/components/articles/ArticleBanner'
 import { Contents } from '@/components/articles/Contents'
+import { notFound } from 'next/navigation'
+import { Metadata } from 'next'
 
 
-
-
-async function generateMetadata({ params }: {
+interface PropsData {
   params: {
     slug: string
     category: string
   }
-}) {
-  try {
-    const articleData = await fetchArticle(params.slug, params.category) as Article
-    if (!articleData) return {
-      title: 'Title not found',
-      description: 'The page you are looking for does not exist'
-    }
-    
-
-    return {
-      title: articleData.title,
-      description: articleData.overview,
-      alternates: {
-        canonical: `/${articleData._type}/${articleData.slug.current}`
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: articleData.title,
-        description: articleData.overview,
-        siteId: 'NILLARMAG',
-        creator: '@nillarmagazine',
-        creatorId: 'NILLARMAG',
-        
-      }
-    }
-  } catch (error) {
-    return {
-      title: 'Title not found',
-      description: 'The page you are looking for does not exist'
-    }
-  }
 }
 
 
+// const fetchData = async () => {
+//  const query = 
+// }
+
+
+export const generateMetadata = async ({ params }: PropsData): Promise<Metadata> => {
+const article = (await fetchArticle(params.slug, params.category)) as Article;
+
+  if (!article) {
+    return {
+      title: '404 - Not Found',
+      description: 'The page you are looking for does not exist'
+    }
+  }
+
+  return {
+    title: article.title,
+    description: article.overview,
+    alternates: {
+      canonical: `/${article.slug.current}`,
+    },
+  };
+  
+}
+
+
+// export async function generateMetadata({ params }: {
+//   params: {
+//     slug: string
+//     category: string
+//   }
+// }) {
+//   try {
+//     const articleData = await fetchArticle(params.slug, params.category) as Article
+//     if (!articleData) return {
+//       title: 'Title not found',
+//       description: 'The page you are looking for does not exist'
+//     }
+    
+
+//     return {
+//       title: articleData.title,
+//       description: articleData.overview,
+//       alternates: {
+//         canonical: `/${articleData._type}/${articleData.slug.current}`,
+//       },
+//       twitter: {
+//         card: "summary_large_image",
+//         title: articleData.title,
+//         description: articleData.overview,
+//         siteId: "NILLARMAG",
+//         creator: "@nillarmagazine",
+//         creatorId: "NILLARMAG",
+//       },
+    
+//     };
+//   } catch (error) {
+//     return {
+//       title: 'Title not found',
+//       description: 'The page you are looking for does not exist'
+//     }
+//   }
+// }
 
 const fetchArticle = async (slug: string, category: string) => {
   const query = await groq`
   *[_type == "${category}" && slug.current == "${slug}" ] {
     ...,
     author->,
-    slug->,
     category->,
     imageSource,
     content,
@@ -61,6 +92,7 @@ const fetchArticle = async (slug: string, category: string) => {
   const data = await client.fetch(query, { next: { revalidate: 10 } })
   return data
 }
+
 
 const fetchAll = async ( type: string ) => {
   const query = await groq`
@@ -75,7 +107,7 @@ const fetchAll = async ( type: string ) => {
   return data
 }
 
-const Category = async ({ params }:
+const page = async ({ params }:
   {
     params: {
       slug: string,
@@ -86,8 +118,13 @@ const Category = async ({ params }:
   const all = await fetchAll(params.category) as News[];
 
 
+  if (!all || !article) {
+    return notFound()
+  }
+
+
   return (
-    <div className=''>
+    <div className=' mt-[80px] md:mt-0'>
         <ArticleBanner category={params.category} />
       <div className="max-w-6xl mx-auto">
         <Contents article={article} all={all} />
@@ -96,4 +133,4 @@ const Category = async ({ params }:
   )
 }
 
-export default Category
+export default page

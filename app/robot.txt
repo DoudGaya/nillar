@@ -1,5 +1,5 @@
 User-Agent: *
 Allow: /
-Disallow: /private/
+Disallow: /database/
 
-Sitemap: https://acme.com/sitemap.xml
+Sitemap: https://nillar.com/sitemap.xml

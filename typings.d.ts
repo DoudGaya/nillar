@@ -44,6 +44,12 @@ interface Author extends Base {
     slug: Slug;
 }
 
+interface urlLinks {
+    to: string
+    label: string
+}
+
+
 interface SocialLinks {
   id: number;
   name: string;

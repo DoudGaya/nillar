@@ -1,18 +1,13 @@
-'use client'
 import { client } from '@/app/lib/sanity'
 import { Category } from '@/typings'
 import { groq } from 'next-sanity'
 import { fetchCategory } from '../CategoriesNav'
 import { Article, News } from '@/typings'
-import React, { ReactNode } from 'react'
 import Link from 'next/link'
-import { RiTwitterXFill } from 'react-icons/ri'
 import Image from 'next/image'
-import {FaLinkedinIn} from 'react-icons/fa'
 import { urlForImage } from '@/sanity/lib/image'
-import { PortableText } from '@portabletext/react'
-import { socials } from '@/data/schemas'
 import { ArticleSocialLinks } from '../SocialLinks'
+import { notFound } from 'next/navigation'
 
 
 
@@ -25,16 +20,23 @@ const fetchSingleCategory = async (category: string) => {
   "articles": *[_type == 'article' && references(^._id)]
 }[0]
 `
-  const data = await client.fetch(query);
+  const data = await client.fetch(query, { next: { revalidate: 10 } });
   return data
 } 
+
+
 
 export const CategoryContents = async ({ category }: {
   category: string
 }) => {
 
   const datas = await fetchSingleCategory(category) as Category
-  const restOfCategories = datas.articles.slice(1)
+  const restOfCategories = datas?.articles?.slice(1)
+
+
+  if (!category || !datas || !restOfCategories) {
+    return notFound()
+  }
   
    const PortableTextBox = {
     types: {
@@ -65,7 +67,7 @@ export const CategoryContents = async ({ category }: {
               return (
                 <Link key={single._id}  href={`/${single?.slug?.current}`} >
                   <div  className=' border-b flex items-end dark:bg-dark-shade-bright bg-[rgb(235,235,235)] px-3 py-4 dark:border-b-primary-light/50 border-gray-300 dark:border-dark-shade-bright'>
-                    <p className=' line-clamp-2 font-newsreader'> {single?.title}</p>
+                    <p className=' line-clamp-2 hover:underline font-newsreader'> {single?.title}</p>
                   </div>
                 </Link>
               )
@@ -80,12 +82,12 @@ export const CategoryContents = async ({ category }: {
       <div className=" lg:col-span-2">
         <div className=" flex flex-col">
           <div className=" justify-end py-3 flex dark:bg-dark-shade-bright bg-primary px-4">
-            <h1 className=' font-header uppercase'>{datas.title}</h1>
+            <h1 className=' font-header uppercase'>{datas?.title}</h1>
           </div>
-          {datas.articles.length <= 0 ?
+          {datas.articles.length < 1 ?
             (
               <div className=' flex w-full py-10 justify-center'>
-                <p className=' text-lg font-newsreader'>There is no available articles on {datas.title} </p>
+                <p className=' text-lg font-newsreader'>There is no available articles on {datas?.title} </p>
               </div>
             ) :
             (
@@ -102,15 +104,15 @@ export const CategoryContents = async ({ category }: {
             {
             restOfCategories.map((single: Article) => {
               return (
-                   <div className=" w-full flex space-x-3">
-                      <div className=" w-2/6">
-                          <Image src={urlForImage(single?.coverImage).url()} className=' h-full object-cover object-center ' width={1000} height={1000} alt="" />
+                   <Link href={`article/${single.slug.current}`} className=" w-full flex flex-col lg:flex-row lg:space-x-3 ">
+                      <div className=" lg:w-2/6 w-full">
+                          <Image src={urlForImage(single?.coverImage).url()} className=' h-full object-cover object-center w-full ' width={1000} height={1000} alt="" />
                       </div>
-                      <div className=" flex flex-col space-y-2 w-4/6 py-3 px-2">
-                        <h2 className='font-header text-2xl lg:text-xl'>{single.title}</h2>
+                      <div className=" flex flex-col space-y-2 w-4/6 py-3 lg:px-2">
+                        <h2 className='font-header text-xl'>{single.title}</h2>
                         <p className='font-newsreader line-clamp-2 italic'>{single?.overview}</p>  
                       </div>
-                  </div>
+                  </Link>
                 )
               })
             }
@@ -135,7 +137,7 @@ export const CategoryContents = async ({ category }: {
           {
           allCategories.map((single: News) => {
               return (
-                <Link key={single._id} href={`/${single._type}/${single?.slug?.current}`} >
+                <Link key={single._id} href={`/${single?.slug?.current}`} >
                   <div  className=' border-b flex items-end dark:bg-dark-shade-bright bg-[rgb(235,235,235)] px-3 py-4 dark:border-b-primary-light/50 border-gray-300 dark:border-dark-shade-bright'>
                     <p className=' line-clamp-2 font-newsreader'> {single?.title}</p>
                   </div>

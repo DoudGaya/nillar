@@ -1,10 +1,28 @@
 import { CategoryBanner } from '@/components/category/CategoryBanner'
 import { CategoryContents } from '@/components/category/CategoryContents'
+import { Metadata } from 'next'
 import React from 'react'
 
-const page = ( {params}: {params: {category: string}}) => {
+
+export const generateMetadata = async ({ params }:
+  {
+    params: { category: string }
+  }): Promise<Metadata> => { 
+  
+  return {
+    title: params.category,
+    alternates: {
+      canonical: `/${params.category}`
+    },
+    description: `Nillar Magazine, Stay informed with latest news on ${params.category} and other related topics`
+  }
+  
+}
+
+const page = ({ params }: { params: { category: string } }) => {
+
   return (
-    <div className=''>
+    <div className=' md:mt-0'>
           <CategoryBanner category={params.category} />
           <div className="max-w-6xl mx-auto">
             <CategoryContents category={params.category} />

@@ -1,7 +1,3 @@
-import {CiInstagram} from 'react-icons/ci'
-import {CiLinkedin} from 'react-icons/ci'
-import {CiTwitter} from 'react-icons/ci'
-import { CiFacebook } from 'react-icons/ci'
 import { socials } from '@/data/schemas'
 
 

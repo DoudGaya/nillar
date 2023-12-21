@@ -69,23 +69,23 @@ export default async function sitemap() {
     }) ?? []
 
      const newsUrls = await fetchNews() as Article[]
-    const nUrls = articlesUrls.map((n) => {
+    const nUrls = newsUrls.map((n) => {
        return {
            url: `${baseUrl}/news/${n.slug.current}`,
            lastModified: new Date(n._updatedAt)
         }
     }) ?? []
 
-     const howToUrls = await fetchHowto() as Article[]
-    const hUrls = articlesUrls.map((how) => {
+    const howToUrls = await fetchHowto() as Article[]
+    const hUrls = howToUrls.map((how) => {
        return {
            url: `${baseUrl}/how-to/${how.slug.current}`,
            lastModified: new Date(how._updatedAt)
         }
     }) ?? []
 
-     const categoriesUrls = await fetchCategories() as Article[]
-    const catUrls = articlesUrls.map((cat) => {
+    const categoriesUrls = await fetchCategories() as Article[]
+    const catUrls = categoriesUrls.map((cat) => {
        return {
            url: `${baseUrl}/${cat.title}`,
            lastModified: new Date(cat._updatedAt)
@@ -99,7 +99,43 @@ export default async function sitemap() {
             priority: 1,
         },
         {
-            url: 'https://about.com/about',
+            url: 'https://nillar.com/about',
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: 'https://nillar.com/contact',
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: 'https://nillar.com/stock',
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: 'https://nillar.com/join',
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: 'https://nillar.com/advertisement',
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: 'https://nillar.com/partnering',
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: 'https://nillar.com/promotion',
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.8,

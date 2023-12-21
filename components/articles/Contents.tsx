@@ -76,8 +76,8 @@ export const Contents = ({ article, all }: { article: Article, all: News[] }) =>
             
           </div>
           <div className=" py-4 border-b border-dark-shade flex flex-col space-y-3">
-            <Image src={urlForImage(article.coverImage).url()} className=' rounded-lg ' width={1000} height={1000} alt="" />
-            <span className=' italic text-sm'><span className=' font-bold'>Source:</span> {article.imageSource} </span>
+            <Image src={urlForImage(article?.coverImage)?.url()} className=' rounded-lg ' width={1000} height={1000} alt="" />
+            <span className=' italic text-sm'><span className=' font-bold'>Source:</span> {article?.imageSource} </span>
           </div>
           <p className=' font-newsreader italic'>
             {article.overview}
