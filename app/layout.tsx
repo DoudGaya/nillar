@@ -89,18 +89,6 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
           name="twitter:title"
           content="Nillar"
         />
-        <Script>
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-2G16ESXQ6W');
-          `}
-        </Script>
-        <Script
-          async
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-2G16ESXQ6W"></Script>
       </Head>
       <body
         className={`${inter.className} bg-[rgb(244,244,244)] dark:bg-[rgb(0,0,0)]`}>
@@ -119,6 +107,17 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
             <MobileFooter />
           </div>
         </Providers>
+
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-2G16ESXQ6W" />
+        <Script id="google-analytics">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-2G16ESXQ6W');
+        `}
+        </Script>
       </body>
     </html>
   );
