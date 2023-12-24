@@ -104,7 +104,7 @@ export const CategoryContents = async ({ category }: {
             {
             restOfCategories.map((single: Article) => {
               return (
-                   <Link href={`article/${single.slug.current}`} className=" w-full flex flex-col lg:flex-row lg:space-x-3 ">
+                   <Link key={single._id} href={`article/${single.slug.current}`} className=" w-full flex flex-col lg:flex-row lg:space-x-3 ">
                       <div className=" lg:w-2/6 w-full">
                           <Image src={urlForImage(single?.coverImage).url()} className=' h-full object-cover object-center w-full ' width={1000} height={1000} alt="" />
                       </div>

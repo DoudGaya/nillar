@@ -37,6 +37,14 @@ const article = (await fetchArticle(params.slug, params.category)) as Article;
     alternates: {
       canonical: `/${article.slug.current}`,
     },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.overview,
+      siteId: "NILLARMAG",
+      creator: "@nillarmagazine",
+      creatorId: "NILLARMAG",
+    },
   };
   
 }

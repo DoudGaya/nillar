@@ -3,7 +3,6 @@ import { Article } from '@/typings'
 import { urlForImage } from '@/sanity/lib/image'
 import { client } from '@/app/lib/sanity'
 import { groq } from 'next-sanity'
-import Image from 'next/image'
 
 
 const fetchArticle = async (slug: string, category: string) => {
@@ -30,7 +29,7 @@ export const size = {
 }
 export const contentType = 'image/png'
  
-export default async function og({ params }: {
+export default async function Image({ params }: {
     params: {
         slug: string,
         category: string
@@ -41,23 +40,33 @@ export default async function og({ params }: {
     const article = await fetchArticle(slug, category) as Article
   return new ImageResponse(
     (
-      <div tw="flex rounded-lg flex-col h-full pb-6 items-center justify-center ">
-        <div tw=" relative">
-          <img
-            src={urlForImage(article.coverImage).url()}
-            height={1000}
-            width={1000}
-            tw=" w-full h-[80%]"
-            alt={article.title}
-          />
-          <small className=' absolute left-6 bottom-6'> { article?.author?.name }</small>
-        </div>
-        <div tw=" flex flex-col bg-black text-white px-6 py-6  bg-primary-light ">
-          <p tw="font-header text-3xl">{article?.title}</p>
-          <p tw="font-newsreader line-clamp-2"> {article?.overview}</p>
+      <div
+        tw=' relative flex '
+        style={{
+          fontSize: 10,
+          backgroundImage: `url(${urlForImage(article.coverImage).url()})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          backgroundOrigin: 'center',
+          position: 'relative',
+        }}
+      >
+        <div
+          style={{
+          position: 'absolute',
+          bottom: '20px',
+          right: '20px',
+          borderRadius: '40px',
+          color: 'white',
+          backgroundColor: 'black',
+          fontSize: 8,
+          padding: '4px'
+        }}
+        >
+          Nillar Magazine...
         </div>
       </div>
     ),
-    size
+    size,
   );
 }

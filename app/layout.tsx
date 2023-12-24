@@ -27,11 +27,6 @@ export const metadata: Metadata = {
         "https://nillar.com/nillar.png",
     ],
   },
-  // twitter: {
-  //   handle: "@NillarMagz",
-  //   site: "@NillarMagz",
-  //   cardType: "summary_large_image"
-  // },
   keywords: [
     "finance",
     "business",
