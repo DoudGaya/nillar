@@ -87,7 +87,7 @@ export default async function sitemap() {
     const categoriesUrls = await fetchCategories() as Article[]
     const catUrls = categoriesUrls.map((cat) => {
        return {
-           url: `${baseUrl}/${cat.title}`,
+           url: `${baseUrl}/${cat.slug.current}`,
            lastModified: new Date(cat._updatedAt)
         }
     }) ?? []
