@@ -68,7 +68,7 @@ export default async function sitemap() {
         }
     }) ?? []
 
-     const newsUrls = await fetchNews() as Article[]
+    const newsUrls = await fetchNews() as Article[]
     const nUrls = newsUrls.map((n) => {
        return {
            url: `${baseUrl}/news/${n.slug.current}`,
