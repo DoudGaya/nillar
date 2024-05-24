@@ -18,7 +18,7 @@ const fetchData = async () => {
     articleType->,
     editor->,
   } `
-  const data = await client.fetch(query, {cache: "no-store"})
+  const data = await client.fetch(query, {next: {revalidate: 10}})
   return data
 }
 
@@ -29,7 +29,6 @@ export default async function Home() {
   const bannerArticle = data[0]
   const bannerSideArticles = data.slice(1, 5)
 
-  console.log(bannerArticle.articleType)
 
 
   return (

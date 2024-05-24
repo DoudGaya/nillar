@@ -13,8 +13,6 @@ export const HomeBanner = async (
   }) => {
 
 
-    console.log(bannerArticle.articleType)
-
 
     return (
         <div className=" max-w-[1200px] mx-auto px-10 w-full flex flex-col ">
