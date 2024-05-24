@@ -12,20 +12,34 @@ import { groq } from "next-sanity"
 
 
 const fetchData = async () => {
-  const query = groq`*[_type == 'article']`
-  const data = await client.fetch(query)
+  const query = groq`*[_type == 'article'] | order(_createdAt desc) {
+    ...,
+    author->,
+    articleType->,
+    editor->,
+  } `
+  const data = await client.fetch(query, {cache: "no-store"})
   return data
 }
 
 export default async function Home() {
+
   const data = await fetchData() as Article[]
+
+  const bannerArticle = data[0]
+  const bannerSideArticles = data.slice(1, 5)
+
+  console.log(bannerArticle.articleType)
+
 
   return (
     <main className="">
       <div className="">
-        <HomeBanner />
+        <HomeBanner 
+        bannerArticle={bannerArticle} 
+        bannerSideArticles={bannerSideArticles} />
      </div>
-      <div className="w-full border dark:border-stone-500 border-line-color"></div>
+    
         <Socials />
         <Topics />
       <div className="w-full my-10 bg-banner dark:bg-stone-900 border-y border-line-color dark:border-stone-500 py-6">
@@ -41,7 +55,6 @@ export default async function Home() {
       <div className="my-10">
         <Acitivities />
       </div>
-
     </main>
   )
 }

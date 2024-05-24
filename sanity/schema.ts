@@ -7,7 +7,8 @@ import editor from './schema/editor'
 import { howTo } from './schema/howto'
 import { tags } from './schema/tags'
 import { newsLetters } from './schema/newsLetters'
+import articleType from './schema/articleType'
 export const schema: { types: SchemaTypeDefinition[] } = {
   
-  types: [article, author, category, news, tags, howTo, newsLetters, editor]
+  types: [article, author, category, articleType, news, tags, howTo, newsLetters, editor]
 }

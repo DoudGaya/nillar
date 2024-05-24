@@ -89,14 +89,16 @@ const article = (await fetchArticle(params.slug, params.category)) as Article;
 // }
 
 const fetchArticle = async (slug: string, category: string) => {
-  const query = await groq`
-  *[_type == "${category}" && slug.current == "${slug}" ] {
+  const query = await groq`*[_type == "article" && slug.current == "${slug}" ] {
     ...,
     author->,
     category->,
     imageSource,
     content,
-  } [0]`
+    articleType->,
+    _id,
+  } [0]
+  `
   const data = await client.fetch(query, { next: { revalidate: 10 } })
   return data
 }
@@ -104,12 +106,13 @@ const fetchArticle = async (slug: string, category: string) => {
 
 const fetchAll = async ( type: string ) => {
   const query = await groq`
-  *[_type == '${type}']{
+  *[_type == 'article']{
     _id,
     title,
     slug,
     _type,
     coverImage,
+    articleType->
   }[0...10]`
   const data = await client.fetch(query, { next: { revalidate: 10 } });
   return data
@@ -133,7 +136,7 @@ const page = async ({ params }:
 
   return (
     <div className=' mt-[80px] md:mt-0'>
-        <ArticleBanner category={params.category} />
+        <ArticleBanner category={article.articleType.slug.current} />
       <div className="max-w-6xl mx-auto">
         <Contents article={article} all={all} />
       </div>

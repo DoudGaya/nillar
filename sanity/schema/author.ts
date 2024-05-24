@@ -33,21 +33,25 @@ export default defineType({
       name: 'image',
       title: 'Image',
       type: 'image',
+     
       options: {
         hotspot: true,
       },
+      // @ts-ignore
       fields: [
         {
           name: 'alt',
           type: 'string',
           title: 'Alternative Text',
         }
-      ]
+      ],
+
     }),
     defineField({
       name: 'bio',
       title: 'Bio',
       type: 'array',
+      // @ts-ignore
       of: [
         {
           title: 'Block',

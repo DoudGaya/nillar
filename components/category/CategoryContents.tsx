@@ -17,7 +17,11 @@ const fetchSingleCategory = async (category: string) => {
   *[_type == 'category' && slug.current == "${category}"] | {
   title,
   _id,
-  "articles": *[_type == 'article' && references(^._id)]
+  "articles": *[_type == 'article' && references(^._id)] | {
+    ...,
+    articleType->,
+    author->,
+  }
 }[0]
 `
   const data = await client.fetch(query, { next: { revalidate: 10 } });
@@ -32,6 +36,7 @@ export const CategoryContents = async ({ category }: {
 
   const datas = await fetchSingleCategory(category) as Category
   const restOfCategories = datas?.articles?.slice(1)
+
 
 
   if (!category || !datas || !restOfCategories) {
@@ -93,7 +98,8 @@ export const CategoryContents = async ({ category }: {
             (
             <div className=" py-4 border-b border-dark-shade flex flex-col space-y-3">
               <Image src={urlForImage(datas?.articles[0]?.coverImage).url()} className=' h-[250px] object-cover object-center ' width={1000} height={1000} alt="" />
-              <h1 className=' font-header text-2xl lg:text-2xl' >{datas.articles[0].title}</h1>
+              
+              <Link href={ `${datas?.articles[0]?.articleType?.slug?.current}/${datas?.articles[0].slug.current}` } className=' hover:cursor-pointer font-header text-2xl lg:text-2xl' >{datas.articles[0].title}</Link>
               <span className='italic text-sm'><span className='font-bold'>Source:</span> {datas.articles[0].imageSource} </span>
             </div>
             )
@@ -102,15 +108,15 @@ export const CategoryContents = async ({ category }: {
         </div>
         <div className=" py-6 my-6 border-dark-shade-bright dark:border-primary flex flex-col space-y-6 border-y">
             {
-            restOfCategories.map((single: Article) => {
+            restOfCategories.map((restOfArticle: Article) => {
               return (
-                   <Link key={single._id} href={`article/${single.slug.current}`} className=" w-full flex flex-col lg:flex-row lg:space-x-3 ">
+                   <Link key={restOfArticle._id} href={`article/${restOfArticle.slug.current}`} className=" w-full  flex flex-col lg:flex-row lg:space-x-3 ">
                       <div className=" lg:w-2/6 w-full">
-                          <Image src={urlForImage(single?.coverImage).url()} className=' h-full object-cover object-center w-full ' width={1000} height={1000} alt="" />
+                          <Image src={urlForImage(restOfArticle?.coverImage).url()} className=' h-full object-cover object-center w-full ' width={1000} height={1000} alt="" />
                       </div>
                       <div className=" flex flex-col space-y-2 w-4/6 py-3 lg:px-2">
-                        <h2 className='font-header text-xl'>{single.title}</h2>
-                        <p className='font-newsreader line-clamp-2 italic'>{single?.overview}</p>  
+                        <h2 className='font-header text-xl'>{restOfArticle.title}</h2>
+                        <p className='font-newsreader line-clamp-2 italic'>{restOfArticle?.overview}</p>  
                       </div>
                   </Link>
                 )
@@ -148,7 +154,6 @@ export const CategoryContents = async ({ category }: {
         </div>
           </div>
       </div>
-      
     </div>
   )
 }

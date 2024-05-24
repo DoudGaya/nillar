@@ -23,6 +23,7 @@ export default defineType({
       name: 'author',
       title: 'Author',
       type: 'reference',
+      // @ts-ignore
       to: {type: 'author'},
     }),
     defineField({
@@ -32,6 +33,7 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      // @ts-ignore
       fields: [
         {
           name: 'alt',
@@ -44,6 +46,7 @@ export default defineType({
       name: 'categories',
       title: 'Categories',
       type: 'array',
+      // @ts-ignore
       of: [{type: 'reference', to: {type: 'category'}}],
     }),
     defineField({
@@ -56,6 +59,7 @@ export default defineType({
       name: 'body',
       title: 'Body',
       type: 'array',
+      // @ts-ignore
       of: [
         {
           title: 'Block',

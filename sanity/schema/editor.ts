@@ -26,6 +26,7 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      // @ts-ignore
       fields: [
         {
           name: 'alt',
@@ -38,6 +39,7 @@ export default defineType({
       name: 'bio',
       title: 'Bio',
       type: 'array',
+      // @ts-ignore
       of: [
         {
           title: 'Block',

@@ -15,12 +15,20 @@ interface Article extends Base {
     tags: Tags[]
     category: Category;
     coverImage: Image;
+    articleType: ArticleType 
     slug: Slug;
     imageSource: string
     twitter: string;
     linkedin: string
     title: string;
     overview: string;
+}
+
+interface ArticleType {
+    title: string;
+    description: string;
+    slug: Slug;
+    articles: Article[]
 }
 
 interface News extends Base {

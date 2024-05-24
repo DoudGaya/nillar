@@ -47,14 +47,21 @@ export const article = {
             to: {
                 type: 'category'
             }
-            // of: [{type: 'reference', to: {type: 'category'}}],
         },
-
+        
         {
             name: 'tags',
             title: 'Tags',
             type: 'array',
             of: [{type: 'reference', to: {type: 'tags'}}],
+        },
+        {
+            name: 'articleType',
+            title: 'Article Type',
+            type: 'reference',
+            to: {
+                type: 'articleType'
+            }
         },
 
         {
