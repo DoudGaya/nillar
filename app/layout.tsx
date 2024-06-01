@@ -86,7 +86,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
         />
       </Head>
       <body
-        className={`${inter.className} bg-[rgb(244,244,244)] dark:bg-[rgb(0,0,0)]`}>
+        className={`${inter.className} bg-white dark:bg-[rgb(0,0,0)]`}>
         <Providers>
           <div className=" flex-col top-0 fixed w-full lg:flex">
             <Navbar />
@@ -94,7 +94,7 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
               <CategoriesNav />
             </div>
           </div>
-          <div className=" lg:mt-[120px] mt-[88px] ">{children}</div>
+          <div className=" lg:mt-[90px] ">{children}</div>
           <div className=" lg:block hidden">
             <Footer />
           </div>

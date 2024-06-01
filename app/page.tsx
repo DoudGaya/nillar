@@ -41,7 +41,7 @@ export default async function Home() {
     
         <Socials />
         <Topics />
-      <div className="w-full my-10 bg-banner dark:bg-stone-900 border-y border-line-color dark:border-stone-500 py-6">
+      <div className="w-full bg-banner dark:bg-stone-900 border-y border-line-color dark:border-stone-500 py-6">
         <HomeHowTo />
       </div>
       <div className="my-10">

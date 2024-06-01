@@ -17,7 +17,7 @@ export const Navbar = () => {
           <div className=" absolute ">
             <DesktopSideNavContents navSwitch={navSwitch} setNavSwitch={setNavSwitch} />
           </div>
-          <div className=" flex items-center space-x-2 dark:bg-dark-shade lg:px-10 px-8 w-full bg-white dark:text-gray-100 py-4 border-b dark:border-dark-shade-bright">
+          <div className=" flex items-center space-x-2 dark:bg-dark-shade py-2 lg:px-10 px-8 w-full md:bg-white bg-white/80 dark:text-gray-100  border-b dark:border-dark-shade-bright">
             <div className=" justify-between max-w-7xl flex w-full items-center mx-auto">
               <Link
                 href="/about"

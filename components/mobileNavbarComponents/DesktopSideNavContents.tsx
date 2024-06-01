@@ -17,7 +17,7 @@ export const DesktopSideNavContents = ({ navSwitch, setNavSwitch}: any) => {
       className={`${
         navSwitch ? " block" : "hidden"
       } transition-all delay-[60ms] duration-[60ms] ease-in-out animate-slideleft`}>
-      <div className="w-[250px]  bg-white  py-6 flex flex-col justify-between shadow-md border-r border-gray-200 dark:border-gray-800 dark:bg-black h-screen">
+      <div className="w-[250px]  bg-white  py-3 flex flex-col justify-between shadow-md border-r border-gray-200 dark:border-gray-800 dark:bg-black h-screen">
         <div className=" flex flex-col">
           <div className=" lg:">
              <MobileNavLogo />

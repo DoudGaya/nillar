@@ -11,7 +11,7 @@ export const NavContents = ({
   setNavSwitch: any;
 }) => {
   return (
-    <div className=" flex flex-col px-4 py-2">
+    <div className=" flex flex-col px-4 py-2 ">
       <p className=" text-2xl text-black dark:text-gray-200 font-semibold border-b border-gray-200 dark:border-gray-800 py-1">
         {title}
       </p>
