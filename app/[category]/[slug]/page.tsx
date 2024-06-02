@@ -99,7 +99,7 @@ const fetchArticle = async (slug: string, category: string) => {
     _id,
   } [0]
   `
-  const data = await client.fetch(query, { next: { revalidate: 10 } })
+  const data = await client.fetch(query, { revalidate: 10 })
   return data
 }
 
@@ -114,7 +114,7 @@ const fetchAll = async ( type: string ) => {
     coverImage,
     articleType->
   }[0...10]`
-  const data = await client.fetch(query, { next: { revalidate: 10 } });
+  const data = await client.fetch(query, { revalidate: 10 });
   return data
 }
 
@@ -132,7 +132,6 @@ const page = async ({ params }:
   if (!all || !article) {
     return notFound()
   }
-
 
   return (
     <div className=' mt-[80px] md:mt-0'>

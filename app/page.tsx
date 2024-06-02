@@ -18,7 +18,7 @@ const fetchData = async () => {
     articleType->,
     editor->,
   }[0...5]`
-  const data = await client.fetch(query, { next: { revalidate: 3600 } })
+  const data = await client.fetch(query, { revalidate: 10  })
   return data
 }
 
