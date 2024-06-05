@@ -12,7 +12,7 @@ import { urlForImage } from '@/sanity/lib/image'
 
 const fetchingBusinessArticles = async () => {    
     const query = groq`*[_type == 'news' && references('96886e79-a26f-4a28-add1-03781f081479')][0...7]`
-    const data = await client.fetch(query, { next: { revalidate: 10 } })
+    const data = await client.fetch(query, { revalidate: 10 })
     return data
 }
 

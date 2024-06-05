@@ -23,7 +23,7 @@ const fetchHowTos = async () => {
             coverImage,
         }
     `
-    const howTos = await client.fetch(query, { next: { revalidate: 10 } })
+    const howTos = await client.fetch(query, { revalidate: 10 })
     return howTos
 }
 
