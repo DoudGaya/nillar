@@ -7,18 +7,12 @@ import { Contents } from '@/components/articles/Contents'
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 
-
 interface PropsData {
   params: {
     slug: string
     category: string
   }
 }
-
-
-// const fetchData = async () => {
-//  const query = 
-// }
 
 
 export const generateMetadata = async ({ params }: PropsData): Promise<Metadata> => {

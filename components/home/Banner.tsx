@@ -13,7 +13,8 @@ export const HomeBanner = async (
         <div className=" w-full mx-auto flex flex-col ">
         <div  className=" bg-cover grid gap-y-12 grid-cols-1 lg:grid-cols-4 w-full">
           <div style={{ backgroundImage: `url('${urlForImage(bannerArticle?.coverImage).url()}')`}} className=" bg-no-repeat h-screen md:h-[90vh] bg-cover lg:col-span-3 w-full bg-center flex border-b lg:border-none items-end ">
-            <div className=" from-transparent w-full via-black/80 text-white   to-black">
+           
+            <div className=" from-transparent w-full via-black/80 text-white to-black">
               <div className=" flex w-full flex-col pt-20 pb-10 bg-gradient-to-b space-y-3 px-6 z-0 lg:px-10 " >
                 <Link href={`${bannerArticle?.articleType?.slug?.current}/${bannerArticle?.slug?.current}`} className=" text-4xl pt-10 font-keisei hover:underline"> {bannerArticle.title} </Link>
                 <p className=" line-clamp-2 text-lg font-poppin"> { bannerArticle?.overview} </p>
@@ -21,12 +22,12 @@ export const HomeBanner = async (
             </div>
            
           </div>
-          <div className=" ">
+          <div className="">
             <div className=" flex flex-col px-6 w-full py-12 space-y-4">
               <div className=" w-full flex ">
                 <h2 className=" bg-red-500 font-keisei text-white px-2 py-1 text-xl">Latest News</h2>
               </div>
-            { bannerSideArticles.length > 0 ?
+              { bannerSideArticles.length > 0 ?
               bannerSideArticles.map((item: Article) => {
                 return (
                   <div key={item._id} className=" w-full  py-4 space-y-2 justify-between flex flex-col ">
