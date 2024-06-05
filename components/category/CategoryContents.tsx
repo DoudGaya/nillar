@@ -14,7 +14,7 @@ import { notFound } from 'next/navigation'
 
 const fetchSingleCategory = async (category: string) => {
   const query = groq`
-  *[_type == 'category' && slug.current == "${category}"] | {
+  *[_type == 'category' && slug.current == "${category}"] | order(_createdAt desc) | {
   title,
   _id,
   "articles": *[_type == 'article' && references(^._id)] | {
@@ -157,3 +157,6 @@ export const CategoryContents = async ({ category }: {
     </div>
   )
 }
+
+
+export const revalidate = 10
