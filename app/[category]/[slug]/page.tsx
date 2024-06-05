@@ -93,7 +93,7 @@ const fetchArticle = async (slug: string, category: string) => {
     _id,
   } [0]
   `
-  const data = await client.fetch(query, { revalidate: 10 })
+  const data = await client.fetch(query, { revalidate: 60 })
   return data
 }
 
@@ -108,7 +108,7 @@ const fetchAll = async ( type: string ) => {
     coverImage,
     articleType->
   }[0...10]`
-  const data = await client.fetch(query, { revalidate: 10 });
+  const data = await client.fetch(query, { revalidate: 60});
   return data
 }
 
@@ -137,4 +137,5 @@ const page = async ({ params }:
   )
 }
 
+export const revalidate = 10
 export default page
