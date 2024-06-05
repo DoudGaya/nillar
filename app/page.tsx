@@ -30,7 +30,6 @@ export default async function Home() {
   const bannerSideArticles = data.slice(1, 5)
 
 
-
   return (
     <main className="">
       <div className="">
