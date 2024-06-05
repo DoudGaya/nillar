@@ -14,7 +14,7 @@ export const fetchCategory = async () => {
         },
         title
     } `
-    const data = await client.fetch(query,  { next: { revalidate: 10 }})
+    const data = await client.fetch(query, { revalidate: 10 })
     return data
 }
 
