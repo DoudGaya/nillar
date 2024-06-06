@@ -5,6 +5,9 @@ import { client } from "@/app/lib/sanity"
 import { Article } from "@/typings"
 import ReactTimeAgo from "react-time-ago"
 
+
+const dynamic = 'force-dynamic'
+
 import { urlForImage } from "@/sanity/lib/image"
 const fetchArticles = async () => {
   const query = groq`
@@ -12,6 +15,7 @@ const fetchArticles = async () => {
   {
     title,
     coverImage,
+    overview,
     slug,
     category-> {
         title
@@ -28,24 +32,27 @@ const fetchArticles = async () => {
 export const Topic = async ({ single }: any) => {
     const articles = await fetchArticles() as Article[];
     return (
-        <div className=" flex flex-col border dark:border-dark-shade-bright lg:px-4 py-8 space-y-4">
-        <div className=" border-b border-dark-shade-bright">
-                <h3 className=" font-header text-2xl uppercase">
+        <div className=" flex flex-col py-8 space-y-4">
+        <div className=" w-full flex">
+                <h3 className={` ${single == 'Business' ? 'bg-blue-600 text-white' : '' } font-header px-6 py-1 text-2xl `}>
                     {single}
                 </h3>
         </div>
-            <div className=" flex space-y-6 flex-col">
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
              { 
                     articles.map((item: Article) => {
                     return (
                         <>
                             {
                                 item.category?.title == single &&
-                        <div key={item._id} className=" flex flex-col p-6 border-b border-primary space-y-2 py-3 ">
-                            <div className=" flex space-x-4">
-                                 <Image src={urlForImage(item.coverImage).url()} alt={''} height={1000} width={1000} className="h-20 flex-none object-cover w-20" />
+                        <div key={item._id} className=" flex flex-col space-y-2 py-3 ">
+                            <div className=" flex flex-col">
+                                 <Image src={urlForImage(item.coverImage).url()} alt={''} height={800} width={800} className="h-[200px] flex-none object-cover w-full" />
                              <div className="">
-                                <Link href={`/article/${item.slug?.current}`} className=" font-semibold hover:underline line-clamp-2 font-keisei">{item.title}</Link>
+                                <Link href={`/article/${item.slug?.current}`} className=" hover:underline line-clamp-2">
+                                    <h1 className="font-poppin">{item.title}</h1>
+                                    <p className=" text-sm">{item.overview}</p>
+                                </Link>
                              </div>
                             </div>
 
@@ -61,9 +68,9 @@ export const Topic = async ({ single }: any) => {
                      )
                  })
              }
-             <div className=" flex justify-center">
+             {/* <div className=" flex justify-center">
                 <Link href={single} className=" bg-black text-white font-keisei px-8 py-2 ">More</Link>
-             </div>
+             </div> */}
          </div>
      </div>
     )
