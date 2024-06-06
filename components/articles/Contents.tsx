@@ -43,7 +43,7 @@ export const Contents = ({ article, all }: { article: Article, all: News[] }) =>
               return (
                 <Link key={single._id}  href={`/${single._type}/${single?.slug?.current}`} >
                   <div  className=' border-b flex items-end dark:bg-dark-shade-bright bg-[rgb(235,235,235)] px-3 py-4 dark:border-b-primary-light/50 border-gray-300 dark:border-dark-shade-bright'>
-                    <p className=' line-clamp-2 font-newsreader'> {single?.title}</p>
+                    <p className=' line-clamp-2 text-sm font-newsreader'> {single?.title}</p>
                   </div>
                 </Link>
               )

@@ -7,7 +7,6 @@ export const HomeBanner = async (
   {
     bannerArticle: Article
     bannerSideArticles: Article[]
-
   }) => {
     return (
         <div className=" w-full mx-auto flex flex-col ">
@@ -16,7 +15,7 @@ export const HomeBanner = async (
            
             <div className=" from-transparent w-full via-black/80 text-white to-black">
               <div className=" flex w-full flex-col pt-20 pb-10 bg-gradient-to-b space-y-3 px-6 z-0 lg:px-10 " >
-                <Link href={`${bannerArticle?.articleType?.slug?.current}/${bannerArticle?.slug?.current}`} className=" text-4xl pt-10 font-keisei hover:underline"> {bannerArticle.title} </Link>
+                <Link href={`${bannerArticle?.articleType?.slug?.current}/${bannerArticle?.slug?.current}`} className=" text-2xl lg:text-4xl pt-10 font-keisei hover:underline"> {bannerArticle.title} </Link>
                 <p className=" line-clamp-2 text-lg font-poppin"> { bannerArticle?.overview} </p>
               </div>
             </div>

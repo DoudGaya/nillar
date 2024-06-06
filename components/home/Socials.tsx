@@ -1,12 +1,10 @@
 import { socials } from '@/data/schemas'
-
-
 import Link from 'next/link'
 export const Socials = () => {
     return (
         <div className=" px-8">
-             <div className=" px-4 items-center flex lg:justify-between justify-center max-w-4xl bg-[#F9F9F9] dark:bg-stone-950  mx-auto w-full py-3 my-10">
-                <div className=" flex space-x-4 items-center">
+             <div className=" px-4 items-center flex lg:justify-between justify-center max-w-4xl   mx-auto w-full py-3 my-10">
+                <div className="flex space-x-4 items-center">
                     {
                         socials.map((item) => {
                             return (

@@ -11,6 +11,8 @@ import { Acitivities } from "@/components/home/Acitivities"
 import { groq } from "next-sanity"
 
 
+export const dynamic = "force-dynamic";
+
 const fetchData = async () => {
   const query = groq`*[_type == 'article'] | order(_createdAt desc) {
     ...,
@@ -23,13 +25,9 @@ const fetchData = async () => {
 }
 
 export default async function Home() {
-
   const data = await fetchData() as Article[]
-
   const bannerArticle = data[0]
   const bannerSideArticles = data.slice(1, 5)
-
-
   return (
     <main className="">
       <div className="">

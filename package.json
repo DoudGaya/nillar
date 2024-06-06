@@ -27,7 +27,7 @@
     "react-hook-form": "^7.47.0",
     "react-icons": "^4.11.0",
     "react-share": "^4.4.1",
-    "react-time-ago": "^7.2.1",
+    "react-time-ago": "^7.3.3",
     "sanity": "^3.14.4",
     "styled-components": "^6.1.11",
     "tailwindcss": "3.3.3",

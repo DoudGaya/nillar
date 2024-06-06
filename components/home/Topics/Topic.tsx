@@ -3,9 +3,9 @@ import Link from "next/link"
 import { groq } from "next-sanity"
 import { client } from "@/app/lib/sanity"
 import { Article } from "@/typings"
+import ReactTimeAgo from "react-time-ago"
+
 import { urlForImage } from "@/sanity/lib/image"
-
-
 const fetchArticles = async () => {
   const query = groq`
   *[_type == 'article'] | order(_createdAt) 
@@ -50,7 +50,9 @@ export const Topic = async ({ single }: any) => {
                             </div>
 
                             <div className=" w-full flex items-center justify-between">
-                                 <p>2 Days</p>
+                                 <p>
+                                    {/* <ReactTimeAgo date={item._createdAt}  /> */}
+                                 </p>
                                  <Link href={item.slug.current} className="dark:bg-dark-shade-bright bg-primary-light font-keisei px-4 py-1">Learn more</Link>
                             </div>
                          </div>
