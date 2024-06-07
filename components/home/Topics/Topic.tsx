@@ -45,17 +45,16 @@ export const Topic = async ({ single }: any) => {
                         <>
                             {
                                 item.category?.title == single &&
-                        <div key={item._id} className=" flex flex-col space-y-2 py-3 ">
-                            <div className=" flex flex-col">
-                                 <Image src={urlForImage(item.coverImage).url()} alt={''} height={800} width={800} className="h-[200px] flex-none object-cover w-full" />
-                             <div className="">
-                                <Link href={`/article/${item.slug?.current}`} className=" hover:underline line-clamp-2">
-                                    <h1 className="font-poppin">{item.title}</h1>
-                                    <p className=" text-sm">{item.overview}</p>
-                                </Link>
-                             </div>
-                            </div>
-
+                                    <div key={item._id} className=" flex flex-col space-y-2 py-3 ">
+                                        <div className=" flex flex-col">
+                                            <Image src={urlForImage(item.coverImage).url()} alt={''} height={800} width={800} className="h-[200px] flex-none object-cover w-full" />
+                                        <div className="">
+                                            <Link href={`/article/${item.slug?.current}`} className=" hover:underline line-clamp-2">
+                                                <h1 className="font-poppin">{item.title}</h1>
+                                                <p className=" text-sm">{item.overview}</p>
+                                            </Link>
+                                        </div>
+                                    </div>
                             <div className=" w-full flex items-center justify-between">
                                  <p>
                                     {/* <ReactTimeAgo date={item._createdAt}  /> */}
