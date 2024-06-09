@@ -11,7 +11,10 @@ export const HomeBanner = async (
     return (
         <div className=" w-full mx-auto flex flex-col ">
         <div  className=" bg-cover grid gap-y-12 grid-cols-1 lg:grid-cols-4 w-full">
-          <div style={{ backgroundImage: `url('${urlForImage(bannerArticle?.coverImage).url()}')`}} className=" bg-no-repeat h-screen md:h-[90vh] bg-cover lg:col-span-3 w-full bg-center flex border-b lg:border-none items-end ">
+          <div style={{
+            backgroundImage: `url('${urlForImage(bannerArticle?.coverImage).url()}')`,
+            backgroundSize: ''
+        }} className=" bg-no-repeat h-screen md:h-[90vh] bg-cover lg:col-span-3 w-full bg-center flex border-b lg:border-none items-end ">
            
             <div className=" from-transparent w-full via-black/80 text-white to-black">
               <div className=" flex w-full flex-col pt-20 pb-10 bg-gradient-to-b space-y-3 px-6 z-0 lg:px-10 " >

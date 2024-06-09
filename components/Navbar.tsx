@@ -19,7 +19,7 @@ export const Navbar = () => {
           </div>
           <div className=" flex items-center space-x-2 dark:bg-dark-shade py-2 lg:px-10 px-8 w-full md:bg-white bg-white/80 dark:text-gray-100  border-b dark:border-dark-shade-bright">
             <div className=" justify-between max-w-7xl flex w-full items-center mx-auto">
-              <Link
+              <Link 
                 href="/about"
                 className=" hover:underline hidden md:flex flex-none">
                 About Us

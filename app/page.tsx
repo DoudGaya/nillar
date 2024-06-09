@@ -35,7 +35,6 @@ export default async function Home() {
         bannerArticle={bannerArticle} 
         bannerSideArticles={bannerSideArticles} />
      </div>
-    
         <Socials />
         <Topics />
       <div className="w-full bg-banner dark:bg-stone-900 border-y border-line-color dark:border-stone-500 py-6">
