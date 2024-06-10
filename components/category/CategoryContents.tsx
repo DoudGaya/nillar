@@ -1,7 +1,7 @@
 import { client } from '@/app/lib/sanity'
 import { Category } from '@/typings'
 import { groq } from 'next-sanity'
-import { fetchCategory } from '../CategoriesNav'
+import { fetchAllCategory } from '@/actions/articles'
 import { Article, News } from '@/typings'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -9,26 +9,7 @@ import { urlForImage } from '@/sanity/lib/image'
 import { ArticleSocialLinks } from '../SocialLinks'
 import { notFound } from 'next/navigation'
 
-
-
-
-const fetchSingleCategory = async (category: string) => {
-  const query = groq`
-  *[_type == 'category' && slug.current == "${category}"] | order(_createdAt desc) | {
-  title,
-  _id,
-  "articles": *[_type == 'article' && references(^._id)] | {
-    ...,
-    articleType->,
-    author->,
-  }
-}[0]
-`
-  const data = await client.fetch(query, { revalidate: 10 });
-  return data
-} 
-
-
+import { fetchSingleCategory } from '@/actions/articles'
 
 export const CategoryContents = async ({ category }: {
   category: string
@@ -42,7 +23,6 @@ export const CategoryContents = async ({ category }: {
   if (!category || !datas || !restOfCategories) {
     return notFound()
   }
-  
    const PortableTextBox = {
     types: {
       image: ({value}: {value: any}) => {
@@ -51,7 +31,7 @@ export const CategoryContents = async ({ category }: {
     }
   }
 
-  const allCategories = await fetchCategory()
+  const allCategories = await fetchAllCategory()
   return (
       <div className='grid w-full grid-cols-1 px-8 lg:grid-cols-4 py-10 gap-8'>
       <div className=" w-full h-full ">
@@ -86,8 +66,8 @@ export const CategoryContents = async ({ category }: {
          </div>
       <div className=" lg:col-span-2">
         <div className=" flex flex-col">
-          <div className=" justify-end py-3 flex dark:bg-dark-shade-bright bg-primary px-4">
-            <h1 className=' font-header uppercase'>{datas?.title}</h1>
+          <div className=" justify-end py-3 flex dark:bg-dark-shade-bright bg-neutral-100 dark:bg-neutral-800 rounded-sm bg-primary px-4">
+            <h1 className=' font-semibold uppercase'>{datas?.title}</h1>
           </div>
           {datas.articles.length < 1 ?
             (
@@ -97,25 +77,25 @@ export const CategoryContents = async ({ category }: {
             ) :
             (
             <div className=" py-4 border-b border-dark-shade flex flex-col space-y-3">
-              <Image src={urlForImage(datas?.articles[0]?.coverImage).url()} className=' h-[250px] object-cover object-center ' width={1000} height={1000} alt="" />
+              <Image src={urlForImage(datas?.articles[0]?.coverImage).url()} className=' h-[250px] rounded-sm object-cover object-center ' width={1000} height={1000} alt="" />
               
-              <Link href={ `${datas?.articles[0]?.articleType?.slug?.current}/${datas?.articles[0].slug.current}` } className=' hover:cursor-pointer font-header text-2xl lg:text-2xl' >{datas.articles[0].title}</Link>
+              <Link href={ `${datas?.articles[0]?.articleType?.slug?.current}/${datas?.articles[0].slug.current}` } className=' hover:cursor-pointer font-title text-2xl lg:text-2xl' >{datas.articles[0].title}</Link>
               <span className='italic text-sm'><span className='font-bold'>Source:</span> {datas.articles[0].imageSource} </span>
             </div>
             )
          }
           <p className='font-newsreader line-clamp-2 italic'>{datas.articles[0]?.overview}</p>
         </div>
-        <div className=" py-6 my-6 border-dark-shade-bright dark:border-primary flex flex-col space-y-6 border-y">
+        <div className=" py-6 my-6 border-dark-shade-bright dark:border-primary flex flex-col space-y-10 border-y">
             {
             restOfCategories.map((restOfArticle: Article) => {
               return (
-                   <Link key={restOfArticle._id} href={`article/${restOfArticle.slug.current}`} className=" w-full  flex flex-col lg:flex-row lg:space-x-3 ">
+                   <Link key={restOfArticle._id} href={`article/${restOfArticle.slug.current}`} className=" w-full flex flex-col lg:flex-row lg:space-x-3 ">
                       <div className=" lg:w-2/6 w-full">
-                          <Image src={urlForImage(restOfArticle?.coverImage).url()} className=' h-full object-cover object-center w-full ' width={1000} height={1000} alt="" />
+                          <Image src={urlForImage(restOfArticle?.coverImage).url()} className=' h-[250px] rounded-sm object-cover object-center w-full ' width={1000} height={1000} alt="" />
                       </div>
-                      <div className=" flex flex-col space-y-2 w-4/6 py-3 lg:px-2">
-                        <h2 className='font-header text-xl'>{restOfArticle.title}</h2>
+                      <div className=" flex flex-col space-y-2 w-full lg:w-4/6 py-3 lg:px-2">
+                        <h2 className='font-title text-xl'>{restOfArticle.title}</h2>
                         <p className='font-newsreader line-clamp-2 italic'>{restOfArticle?.overview}</p>  
                       </div>
                   </Link>
@@ -144,8 +124,8 @@ export const CategoryContents = async ({ category }: {
           allCategories.map((single: News) => {
               return (
                 <Link key={single._id} href={`/${single?.slug?.current}`} >
-                  <div  className=' border-b flex items-end dark:bg-dark-shade-bright bg-[rgb(235,235,235)] px-3 py-4 dark:border-b-primary-light/50 border-gray-300 dark:border-dark-shade-bright'>
-                    <p className=' line-clamp-2 font-newsreader'> {single?.title}</p>
+                  <div  className=' border-b flex items-end rounded-sm hover:bg-black dark:bg-dark-shade-bright bg-neutral-100 dark:bg-neutral-800 px-3 py-3'>
+                    <p className=' line-clamp-2 text-lg'> {single?.title}</p>
                   </div>
                 </Link>
               )

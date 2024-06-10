@@ -1,37 +1,37 @@
-import { urlLinks } from "@/typings";
+import { Category, urlLinks } from "@/typings";
 import Link from "next/link";
+import { Suspense } from "react";
+import { SideNavLoading } from "../loading-uis/sidenav-loading";
+import { fetchAllCategory } from "@/actions/articles";
+import { fetchSingleCategory } from "@/actions/articles";
+import { SheetTrigger } from "../ui/sheet";
+import { DarkButton } from "../DarkButton";
 
-export const NavContents = ({
-  categories,
-  title,
-  setNavSwitch,
-}: {
-  categories: urlLinks[];
-  title: string;
-  setNavSwitch: any;
-}) => {
+const categories = await fetchAllCategory() as Category[]
+
+export const NavContents = () => {
   return (
-    <div className=" flex flex-col px-4 py-2 ">
-      <p className=" text-2xl text-black dark:text-gray-200 font-semibold border-b border-gray-200 dark:border-gray-800 py-1">
-        {title}
-      </p>
-      <div className=" flex flex-col py-2 space-y-2">
-        {categories.map((category: urlLinks) => {
-          return (
-            <Link
-              key={ category.label}
-              href={category.to}
-              onClick={() => {
-                setNavSwitch();
-              }}>
-              <p className=" text-black dark:text-gray-200 hover:translate-x-1 hover:font-semibold transition-all  text-lg">
-                {""}
-                {category.label}
-              </p>
-            </Link>
-          );
-        })}
-      </div>
+    <div className=" flex flex-col">
+      <h2 className=" text-lg">Article Categories</h2>
+      <Suspense fallback={<SideNavLoading />}>
+        <div className=" flex flex-col space-y-1">
+        {
+          categories.map((category: Category) => {
+            return (
+              <Link href={ category.slug.current } className=" hover:bg-neutral-100 w-full py-2 px-4">
+                <SheetTrigger>{ category.title }</SheetTrigger>
+              </Link>
+            )
+          })
+         }
+        </div>
+    </Suspense>
+    <div className="">
+     <SheetTrigger>
+        <DarkButton />
+     </SheetTrigger>
     </div>
+    </div>
+
   );
 };

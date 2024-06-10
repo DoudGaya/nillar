@@ -14,25 +14,23 @@ import { MobileNavLogo } from './MobileNavLogo';
 export const DesktopSideNavContents = ({ navSwitch, setNavSwitch}: any) => {
   return (
     <div
-      className={`${
-        navSwitch ? " block" : "hidden"
-      } transition-all delay-[60ms] duration-[60ms] ease-in-out animate-slideleft`}>
+      className={`transition-all delay-[60ms] duration-[60ms] ease-in-out animate-slideleft`}>
       <div className="w-[250px]  bg-white  py-3 flex flex-col justify-between shadow-md border-r border-gray-200 dark:border-gray-800 dark:bg-black h-screen">
         <div className=" flex flex-col">
           <div className=" lg:">
              <MobileNavLogo />
          </div>
           <div className="">
-            <NavContents
+            {/* <NavContents
               categories={topCategries}
               title={"Top Categories"}
               setNavSwitch={setNavSwitch}
-            />
-            <NavContents
+            /> */}
+            {/* <NavContents
               categories={businessLinks}
               title={"Business"}
               setNavSwitch={setNavSwitch}
-            />
+            /> */}
           </div>
         </div>
         <div className=" p-3 flex space-y-2 flex-col">

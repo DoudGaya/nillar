@@ -86,21 +86,21 @@ export default function RootLayout({ children, }: { children: React.ReactNode })
         />
       </Head>
       <body
-        className={`${inter.className} bg-white dark:bg-[rgb(0,0,0)]`}>
+        className={`${inter.className} bg-white dark:bg-black`}>
         <Providers>
-          <div className=" flex-col top-0 fixed w-full lg:flex">
-            <Navbar />
-            <div className=" hidden justify-center w-full lg:flex">
-              <CategoriesNav />
-            </div>
+          <div className=" flex-col overflow-hidden top-0 fixed w-full lg:flex">
+              <Navbar />
+              <div className="hidden justify-center w-full lg:flex">
+                <CategoriesNav />
+              </div>
           </div>
-          <div className=" lg:mt-[90px] ">{children}</div>
+          <div className="">{children}</div>
           <div className=" lg:block hidden">
             <Footer />
           </div>
-          <div className="fixed bottom-0 left-auto w-full lg:hidden">
+          {/* <div className="fixed bottom-0 left-auto w-full lg:hidden">
             <MobileFooter />
-          </div>
+          </div> */}
         </Providers>
 
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-2G16ESXQ6W" />

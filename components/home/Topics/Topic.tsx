@@ -45,23 +45,21 @@ export const Topic = async ({ single }: any) => {
                         <>
                             {
                                 item.category?.title == single &&
-                                    <div key={item._id} className=" flex flex-col space-y-2 py-3 ">
+                                    <Link href={`/article/${item.slug?.current}`} key={item._id} className=" flex flex-col space-y-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 p-3 ">
                                         <div className=" flex flex-col">
                                             <Image src={urlForImage(item.coverImage).url()} alt={''} height={800} width={800} className="h-[200px] flex-none object-cover w-full" />
-                                        <div className="">
-                                            <Link href={`/article/${item.slug?.current}`} className=" hover:underline line-clamp-2">
-                                                <h1 className="font-poppin">{item.title}</h1>
-                                                <p className=" text-sm">{item.overview}</p>
-                                            </Link>
+                                            <div className=" flex flex-col py-2 space-y-3">
+                                                    <h1 className=" font-keisei">{item.title}</h1>
+                                                    <p className=" line-clamp-2 text-sm">{item.overview}</p>
+                                            </div>
                                         </div>
-                                    </div>
                             <div className=" w-full flex items-center justify-between">
                                  <p>
                                     {/* <ReactTimeAgo date={item._createdAt}  /> */}
                                  </p>
-                                 <Link href={item.slug.current} className="dark:bg-dark-shade-bright bg-primary-light font-keisei px-4 py-1">Learn more</Link>
+                                 {/* <Link href={item.slug.current} className="dark:bg-dark-shade-bright bg-primary-light font-keisei px-4 py-1">Learn more</Link> */}
                             </div>
-                         </div>
+                         </Link>
                         }
                         </>
                      )

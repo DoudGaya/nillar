@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import nillar from '@/public/nillar_logo.svg'
 import nillarDark from '@/public/nillar_logo_dark.svg'
-import { MobileSideBar } from './MobileSideBar'
 import { useState } from 'react'
 
 
@@ -13,7 +12,7 @@ export const MobileNav = () => {
   return (
     <div className=" relative">
       <div className="">
-        <MobileSideBar navSwitch={navSwitch} setNavSwitch={ setNavSwitch }/>
+       Hello
       </div>
       <div className=" w-full flex-col z-10 ">
         <div className=" flex w-full justify-between items-center p-4 bg-white dark:bg-dark-shade border-b border-line-color dark:border-stone-500 dark-bg-primary">
@@ -32,7 +31,7 @@ export const MobileNav = () => {
             />
           </Link>
           <div className="">
-            <button onClick={() => { setNavSwitch(true)}} className="p-3 rounded-lg">
+            <button onClick={() => {setNavSwitch(true)}} className="p-3 rounded-lg">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
