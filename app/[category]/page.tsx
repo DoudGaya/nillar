@@ -22,9 +22,9 @@ export const generateMetadata = async ({ params }:
 const page = ({ params }: { params: { category: string } }) => {
 
   return (
-    <div className=' md:mt-0'>
+    <div className=' md:mt-[120px]'>
           <CategoryBanner category={params.category} />
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <CategoryContents category={params.category} />
           </div>
     </div>

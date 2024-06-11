@@ -45,7 +45,7 @@ export const Topic = async ({ single }: any) => {
                         <>
                             {
                                 item.category?.title == single &&
-                                    <Link href={`/article/${item.slug?.current}`} key={item._id} className=" flex flex-col space-y-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 p-3 ">
+                                    <Link href={`/article/${item.slug?.current}`} key={item._id} className=" flex flex-col space-y-2 rounded-md hover:bg-neutral-100/50 dark:hover:bg-neutral-800 p-3 ">
                                         <div className=" flex flex-col">
                                             <Image src={urlForImage(item.coverImage).url()} alt={''} height={800} width={800} className="h-[200px] flex-none object-cover w-full" />
                                             <div className=" flex flex-col py-2 space-y-3">

@@ -37,8 +37,8 @@ export const CategoryContents = async ({ category }: {
       <div className=" w-full h-full ">
          <div className=" xl:flex-col space-y-6 hidden xl:flex">
               <div className=" border-b border-dark-shade-bright">
-                  <div className=" flex flex-row pb-4 dark:bg-dark-shade border-b border-gray-300  rounded-sm ">
-                      <input type="search" placeholder='Search Articles' className=' font-newsreader w-full dark:bg-dark-shade-bright bg-gray-200 outline-none py-3 px-3 rounded-sm ' />
+                  <div className=" flex flex-row pb-4  border-b   rounded-sm ">
+                      <input type="search" placeholder='Search Articles' className=' font-newsreader w-full  bg-neutral-100 outline-none py-3 px-3 rounded-sm ' />
                       <button className=' bg-dark-shade dark:bg-stone-500 px-3'>
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 fill-slate-200 dark:fill-slate-800">
                             <path fillRule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clipRule="evenodd" />
@@ -46,13 +46,13 @@ export const CategoryContents = async ({ category }: {
                       </button>
                 </div>
               </div> 
-        <div className= " flex flex-col space-y-4">
+        <div className= " flex flex-col mt-10 space-y-4">
           { allCategories.length >= 0 ?
           allCategories.map((single: News) => {
               return (
                 <Link key={single._id}  href={`/${single?.slug?.current}`} >
-                  <div  className=' border-b flex items-end dark:bg-dark-shade-bright bg-[rgb(235,235,235)] px-3 py-4 dark:border-b-primary-light/50 border-gray-300 dark:border-dark-shade-bright'>
-                    <p className=' line-clamp-2 hover:underline font-newsreader'> {single?.title}</p>
+                  <div  className=' border-b flex items-end dark:bg-neutral-800 bg-neutral-100 px-3 py-4 dark:border-dark-shade-bright'>
+                    <p className=' line-clamp-2 hover:underline'> {single?.title}</p>
                   </div>
                 </Link>
               )
@@ -77,7 +77,7 @@ export const CategoryContents = async ({ category }: {
             ) :
             (
             <div className=" py-4 border-b border-dark-shade flex flex-col space-y-3">
-              <Image src={urlForImage(datas?.articles[0]?.coverImage).url()} className=' h-[250px] rounded-sm object-cover object-center ' width={1000} height={1000} alt="" />
+              <Image src={urlForImage(datas?.articles[0]?.coverImage).url()} className=' h-[350px] rounded-sm object-cover object-center ' width={1000} height={1000} alt="" />
               
               <Link href={ `${datas?.articles[0]?.articleType?.slug?.current}/${datas?.articles[0].slug.current}` } className=' hover:cursor-pointer font-title text-2xl lg:text-2xl' >{datas.articles[0].title}</Link>
               <span className='italic text-sm'><span className='font-bold'>Source:</span> {datas.articles[0].imageSource} </span>
@@ -90,12 +90,12 @@ export const CategoryContents = async ({ category }: {
             {
             restOfCategories.map((restOfArticle: Article) => {
               return (
-                   <Link key={restOfArticle._id} href={`article/${restOfArticle.slug.current}`} className=" w-full flex flex-col lg:flex-row lg:space-x-3 ">
+                   <Link key={restOfArticle._id} href={`article/${restOfArticle.slug.current}`} className="w-full flex flex-col lg:flex-row lg:space-x-3 ">
                       <div className=" lg:w-2/6 w-full">
-                          <Image src={urlForImage(restOfArticle?.coverImage).url()} className=' h-[250px] rounded-sm object-cover object-center w-full ' width={1000} height={1000} alt="" />
+                          <Image src={urlForImage(restOfArticle?.coverImage).url()} className='h-[130px] rounded-sm object-cover object-center w-full ' width={1000} height={1000} alt="" />
                       </div>
                       <div className=" flex flex-col space-y-2 w-full lg:w-4/6 py-3 lg:px-2">
-                        <h2 className='font-title text-xl'>{restOfArticle.title}</h2>
+                        <h2 className='font-title text-lg'>{restOfArticle.title}</h2>
                         <p className='font-newsreader line-clamp-2 italic'>{restOfArticle?.overview}</p>  
                       </div>
                   </Link>

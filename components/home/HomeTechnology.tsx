@@ -33,7 +33,7 @@ export const HomeTechnology = async () => {
 
     return (
     <div className=" max-w-6xl mx-auto px-10">
-        <h3 className=' text-3xl font-header my-10 py-2 border-line-color dark:border-stone-600 border-b '>TECHNOLOGY</h3>
+        <h3 className=' text-3xl font-header my-10 py-2 border-line-color dark:border-stone-600 border-b'>TECHNOLOGY</h3>
         <div className='flex h-full lg:space-x-6 space-y-6 lg:space-y-0 flex-col lg:flex-row'>
                 <div className=" lg:w-4/6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 my-auto ">
                     {
@@ -44,8 +44,8 @@ export const HomeTechnology = async () => {
                                         <Image src={urlForImage(s.coverImage).url()} width={1000} height={1000} alt='' className=' object-cover object-center h-full w-full' />
                                     </div>
                                         <div className=" py-4 bg-stone-200 dark:bg-stone-800 space-y-6 px-2">
-                                            <Link href={`/news/${s.slug.current}`} className="font-semibold line-clamp-2 hover:underline font-keisei text-lg ">
-                                               {s.title}
+                                            <Link href={`/articles/${s.slug.current}`} className="font-semibold line-clamp-2 hover:underline font-keisei text-lg ">
+                                                { s.title }
                                             </Link> 
                                         <div className=" line-clamp-2 font-newsreader">
                                                 {s.overview}

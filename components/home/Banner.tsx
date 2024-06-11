@@ -3,18 +3,18 @@ import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
 
 export const HomeBanner = async ( 
-  { bannerArticle, bannerSideArticles }: 
+  {bannerArticle, bannerSideArticles}: 
   {
     bannerArticle: Article
     bannerSideArticles: Article[]
   }) => {
     return (
-        <div className="w-full mx-auto flex flex-col">
+        <div className="w-full mx-auto flex mt-[110px] flex-col">
         <div  className=" bg-cover h-full grid grid-cols-1 lg:grid-cols-4 w-full">
           <div style={{
             backgroundImage: `url('${urlForImage(bannerArticle?.coverImage).url()}')`,
             backgroundSize: ''
-        }} className=" bg-no-repeat h-screen md:h-[95vh] bg-cover lg:col-span-3 w-full bg-center flex border-b lg:border-none items-end ">
+        }} className=" bg-no-repeat h-screen md:h-[90vh] bg-cover lg:col-span-3 w-full bg-center flex border-b lg:border-none items-end ">
            
             <div className=" from-transparent w-full via-black/80 text-white to-black">
               <div className=" flex w-full flex-col pt-20 pb-10 bg-gradient-to-b space-y-3 px-6 z-0 lg:px-10 " >
@@ -27,7 +27,7 @@ export const HomeBanner = async (
           <div className="">
             <div className=" flex flex-col px-6 w-full py-12 space-y-4">
               <div className=" w-full flex ">
-                <h2 className=" bg-red-500 font-keisei text-white px-3 py-1 text-xl">Latest News</h2>
+                  <h2 className=" bg-red-500 font-keisei text-white px-3 py-1 text-xl">Latest News</h2>
               </div>
               { bannerSideArticles.length > 0 ?
               bannerSideArticles.map((item: Article) => {
