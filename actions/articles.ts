@@ -66,3 +66,5 @@ export const fetchSingleArticle = async (slug: string) => {
   return data
 }
 
+
+
