@@ -155,7 +155,7 @@ export const Footer = () => {
               {socials.map((item) => {
                 return (
                   <Link
-                    key={item.name}
+                    key={item.id}
                     href={item.url}
                     className=" p-1 hover:bg-primary-light/60 rounded-lg">
                     {item.icons}
@@ -171,7 +171,7 @@ export const Footer = () => {
         <div className=" grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 border-t py-8 border-line-color dark:bg-dark-shade-bright">
           {navItems.map((s) => {
             return (
-              <div className="">
+              <div key={ s.id } className="">
                 <div className=" px-4">
                   <h2 className=" uppercase py-2 font-header mb-6 border-b border-line-color dark:bg-dark-shade-bright text-2xl">
                     {s.header}

@@ -37,13 +37,13 @@ export const MobileSideBar = () => {
                 <div className=" p-3 flex space-y-2 flex-col">
                   <div className=" flex border-b py-2 ">
                     {socials.map((social: SocialLinks) => {
-                      return <Link href={social.url}>{social.icons}</Link>;
+                      return <Link key={social.id} href={social.url}>{social.icons}</Link>;
                     })}
                   </div>
                   <div className=" flex flex-wrap gap-2">
                     {company.map((url: urlLinks) => {
                       return (
-                        <Link href={url.to}>
+                        <Link key={url.to} href={url.to}>
                           <p className=" text-sm text-gray-600 hover:text-black hover:font-semibold ">
                             {" "}
                             {url.label}{" "}

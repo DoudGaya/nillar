@@ -42,7 +42,7 @@ export const DesktopSideNavContents = ({ navSwitch, setNavSwitch}: any) => {
           <div className=" flex flex-wrap gap-2">
             {company.map((url: urlLinks) => {
               return (
-                <Link onClick={() => setNavSwitch()} key={url.label} href={url.to}>
+                <Link onClick={() => setNavSwitch()} key={url.to} href={url.to}>
                   <p className=" text-sm text-gray-600 hover:text-black hover:font-semibold ">
                     {" "}
                     {url.label}{" "}
