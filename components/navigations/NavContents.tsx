@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { SideNavLoading } from "../loading-uis/sidenav-loading";
 import { fetchAllCategory } from "@/actions/articles";
-import { fetchSingleCategory } from "@/actions/articles";
 import { SheetTrigger } from "../ui/sheet";
 import { DarkButton } from "../DarkButton";
 
@@ -18,7 +17,7 @@ export const NavContents = () => {
         {
           categories.map((category: Category) => {
             return (
-              <Link href={ category.slug.current } className=" hover:bg-neutral-100 w-full py-2 px-4">
+              <Link href={ category.slug.current } key={category._id} className=" hover:bg-neutral-100 dark:hover:bg-gray-900 w-full py-2 px-4">
                 <SheetTrigger>{ category.title }</SheetTrigger>
               </Link>
             )

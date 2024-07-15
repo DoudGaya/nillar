@@ -1,7 +1,5 @@
 
-import { client } from '@/app/lib/sanity'
 import { Category } from '@/typings'
-import { groq } from 'next-sanity'
 import Link from 'next/link'
 import React from 'react'
 import { fetchAllCategory } from '@/actions/articles'

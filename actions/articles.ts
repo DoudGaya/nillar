@@ -4,7 +4,6 @@ import { client } from "@/sanity/lib/client";
 export const dynamic = "force-dynamic";
 
 
-
 export const fetchAllArticles = async () => {
     const query = groq`*[_type == 'article'] | order(_createdAt desc) {
       ...,
@@ -17,7 +16,7 @@ export const fetchAllArticles = async () => {
   }
 
 export const fetchAllCategory = async () => {
-    const query = await groq`*[_type == 'category'] {
+    const query = await groq`*[_type == 'category'] | order(_createdAt desc) {
         _id,
         slug {
             current
@@ -33,10 +32,10 @@ export const fetchAllCategory = async () => {
 
 export const fetchSingleCategory = async (category: string) => {
   const query = groq`
-  *[_type == 'category' && slug.current == "${category}"] | order(_createdAt desc) | {
+  *[_type == 'category' && slug.current == "${category}"] | order(_createdAt desc) {
   title,
   _id,
-  "articles": *[_type == 'article' && references(^._id)] | {
+  "articles": *[_type == 'article' && references(^._id)] | order(_createdAt desc) {
     ...,
     articleType->,
     author->,

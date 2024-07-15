@@ -20,18 +20,7 @@ export const DesktopSideNavContents = ({ navSwitch, setNavSwitch}: any) => {
           <div className=" lg:">
              <MobileNavLogo />
          </div>
-          <div className="">
-            {/* <NavContents
-              categories={topCategries}
-              title={"Top Categories"}
-              setNavSwitch={setNavSwitch}
-            /> */}
-            {/* <NavContents
-              categories={businessLinks}
-              title={"Business"}
-              setNavSwitch={setNavSwitch}
-            /> */}
-          </div>
+         
         </div>
         <div className=" p-3 flex space-y-2 flex-col">
           <div className=" flex border-b py-2 ">

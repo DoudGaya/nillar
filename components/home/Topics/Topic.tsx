@@ -42,10 +42,10 @@ export const Topic = async ({ single }: any) => {
              { 
                     articles.map((item: Article) => {
                     return (
-                        <>
-                            {
-                                item.category?.title == single &&
-                                    <Link href={`/article/${item.slug?.current}`} key={item._id} className=" flex flex-col space-y-2 rounded-md hover:bg-neutral-100/50 dark:hover:bg-neutral-800 p-3 ">
+                        <div key={item._id}>
+                        {
+                        item.category?.title == single &&
+                            <Link href={`/article/${item.slug?.current}`} key={item._id} className=" flex flex-col space-y-2 rounded-md hover:bg-neutral-100/50 dark:hover:bg-neutral-800 p-3 ">
                                         <div className=" flex flex-col">
                                             <Image src={urlForImage(item.coverImage).url()} alt={''} height={800} width={800} className="h-[200px] flex-none object-cover w-full" />
                                             <div className=" flex flex-col py-2 space-y-3">
@@ -54,20 +54,14 @@ export const Topic = async ({ single }: any) => {
                                             </div>
                                         </div>
                             <div className=" w-full flex items-center justify-between">
-                                 <p>
-                                    {/* <ReactTimeAgo date={item._createdAt}  /> */}
-                                 </p>
-                                 {/* <Link href={item.slug.current} className="dark:bg-dark-shade-bright bg-primary-light font-keisei px-4 py-1">Learn more</Link> */}
                             </div>
                          </Link>
                         }
-                        </>
+                        </div>
                      )
                  })
              }
-             {/* <div className=" flex justify-center">
-                <Link href={single} className=" bg-black text-white font-keisei px-8 py-2 ">More</Link>
-             </div> */}
+
          </div>
      </div>
     )
