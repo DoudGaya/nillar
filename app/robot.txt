@@ -1,6 +1,0 @@
-User-Agent: *
-Allow: /
-Disallow: /database/
-Allow: /api/og/*
-
-Sitemap: https://nillar.com/sitemap.xml
