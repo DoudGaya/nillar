@@ -17,7 +17,7 @@ export const NavContents = () => {
         {
           categories.map((category: Category) => {
             return (
-              <Link href={ category.slug.current } key={category._id} className=" hover:bg-neutral-100 dark:hover:bg-gray-900 w-full py-2 px-4">
+              <Link href={ category.slug.current } key={category._id} className=" hover:bg-neutral-100 dark:hover:bg-black/80 w-full py-2 px-4">
                 <SheetTrigger>{ category.title }</SheetTrigger>
               </Link>
             )
