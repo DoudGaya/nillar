@@ -6,9 +6,7 @@ import { RiTwitterXFill } from 'react-icons/ri'
 import Image from 'next/image'
 import {FaLinkedinIn} from 'react-icons/fa'
 import { urlForImage } from '@/sanity/lib/image'
-
 import { PortableText } from '@portabletext/react'
-import { socials } from '@/data/schemas'
 import { ArticleSocialLinks } from '../SocialLinks'
 
 
