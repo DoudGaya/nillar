@@ -17,33 +17,33 @@ interface PropsData {
 }
 
 
-// export const generateMetadata = async ({ params }: PropsData): Promise<Metadata> => {
-// const article = (await fetchArticle(params.slug, params.category)) as Article;
+export const generateMetadata = async ({ params }: PropsData): Promise<Metadata> => {
+const article = (await fetchArticle(params.slug, params.category)) as Article;
 
-//   if (!article) {
-//     return {
-//       title: '404 - Not Found',
-//       description: 'The page you are looking for does not exist'
-//     }
-//   }
+  if (!article) {
+    return {
+      title: '404 - Not Found',
+      description: 'The page you are looking for does not exist'
+    }
+  }
 
-//   return {
-//     title: article.title,
-//     description: article.overview,
-//     alternates: {
-//       canonical: `/${article.slug.current}`,
-//     },
-//     twitter: {
-//       card: "summary_large_image",
-//       title: article.title,
-//       description: article.overview,
-//       siteId: "NILLARMAG",
-//       creator: "@nillarmagazine",
-//       creatorId: "NILLARMAG",
-//     },
-//   };
+  return {
+    title: article.title,
+    description: article.overview,
+    alternates: {
+      canonical: `/${article.slug.current}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.overview,
+      siteId: "NILLARMAG",
+      creator: "@nillarmagazine",
+      creatorId: "NILLARMAG",
+    },
+  };
   
-// }
+}
 
 
 // export async function generateMetadata({ params }: {
@@ -84,20 +84,20 @@ interface PropsData {
 //   }
 // }
 
-// const fetchArticle = async (slug: string, category: string) => {
-//   const query = await groq`*[_type == "article" && slug.current == "${slug}" ] {
-//     ...,
-//     author->,
-//     category->,
-//     imageSource,
-//     content,
-//     articleType->,
-//     _id,
-//   } [0]
-//   `
-//   const data = await client.fetch(query, { revalidate: 60 })
-//   return data
-// }
+const fetchArticle = async (slug: string, category: string) => {
+  const query = await groq`*[_type == "article" && slug.current == "${slug}" ] {
+    ...,
+    author->,
+    category->,
+    imageSource,
+    content,
+    articleType->,
+    _id,
+  } [0]
+  `
+  const data = await client.fetch(query, { revalidate: 60 })
+  return data
+}
 
 
 const page = async ({ params }:
