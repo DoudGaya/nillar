@@ -75,6 +75,6 @@ export const fetchSingleArticle = async (slug: string) => {
     _id,
   } [0]
   `
-  const data = await client.fetch(query, { revalidate: 60 })
+  const data = await client.fetch(query, { revalidate: 10 })
   return data
 }
