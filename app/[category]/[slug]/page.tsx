@@ -110,8 +110,6 @@ const page = async ({ params }:
   const article = await fetchSingleArticle(params.slug) as Article;
   const all = await fetchAllArticles() as Article[];
 
-  console.log(article)
-
 
   if (!all || !article) {
     return notFound()

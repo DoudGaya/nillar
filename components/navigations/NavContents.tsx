@@ -7,7 +7,6 @@ import { SheetTrigger } from "../ui/sheet";
 import { DarkButton } from "../DarkButton";
 
 const categories = await fetchAllCategory() as Category[]
-
 export const NavContents = () => {
   return (
     <div className=" flex flex-col">
