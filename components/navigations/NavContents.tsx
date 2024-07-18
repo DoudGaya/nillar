@@ -11,7 +11,7 @@ const categories = await fetchAllCategory() as Category[]
 export const NavContents = () => {
   return (
     <div className=" flex flex-col">
-      <h2 className=" text-lg">Article Categories</h2>
+      <h2 className=" text-lg">Article Categories </h2>
       <Suspense fallback={<SideNavLoading />}>
         <div className=" flex flex-col space-y-1">
         {
