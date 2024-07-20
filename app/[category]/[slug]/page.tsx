@@ -15,7 +15,7 @@ interface PropsData {
     category: string
   }
 }
-
+ 
 
 export const generateMetadata = async ({ params }: PropsData): Promise<Metadata> => {
 const article = (await fetchArticle(params.slug, params.category)) as Article;
